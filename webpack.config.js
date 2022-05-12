@@ -13,7 +13,7 @@ const config = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: path.resolve(__dirname, "src", "index.html"),
     }),
   ],
   module: {
@@ -32,6 +32,7 @@ const config = {
       },
     ],
   },
+  devtool: "inline-source-map",
 };
 
 module.exports = () => {
