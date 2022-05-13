@@ -1,4 +1,6 @@
-let weatherData = null;
+import { isToggled } from "./events";
+import displayWeather from "./display-weather";
+export let weatherData = null;
 
 const tranformData = (data) => {
   console.log(data);
@@ -15,8 +17,9 @@ const tranformData = (data) => {
   console.log(weatherData);
   //persistData(weatherData);
   //console.log(weatherData);
+  displayWeather(weatherData, isToggled);
   //display();
-  return weatherData;
+  //return weatherData;
 };
 
 export default tranformData;

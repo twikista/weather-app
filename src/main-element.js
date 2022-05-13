@@ -8,7 +8,7 @@ import displayWeather from "./display-weather";
 
 const mainElement = helper.createElement(
   "main",
-  [searchSection, tempUnitContainer, displayWeather],
+  [searchSection, tempUnitContainer],
   {
     class: "main-element bg-red-500",
   }
