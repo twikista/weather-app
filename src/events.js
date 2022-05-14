@@ -16,18 +16,18 @@ function getLocation() {
 }
 
 //toggle check box to switch between temperature states
-function toggler() {
+export const toggler = () => {
   const toggle = document.querySelector("#temp-unit-toggler");
   toggle.addEventListener("change", (e) => {
     isToggled = toggle.checked;
-    displayWeather(weatherData, isToggled);
+    // displayWeather(weatherData, isToggled);
+    return isToggled;
   });
-}
+};
 
 //initialize events
 const events = () => {
   getLocation();
-  toggler();
 };
 
 export default events;

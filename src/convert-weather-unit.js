@@ -1,3 +1,5 @@
+import { toggler } from "./events";
+
 //convert kelvin unit to Fahrenheit
 function toFahrenheit(kelvinUnit) {
   const fahrenheit = (kelvinUnit - 273.15) * (9 / 5) + 32;
@@ -11,4 +13,12 @@ function toCelsius(kelvinUnit) {
   return celsius.toFixed(2);
 }
 
-export { toCelsius, toFahrenheit };
+const converTemperatureUnit = (weather) => {
+  const isToggled = toggler();
+  const temperatureUnit = isToggled
+    ? toFahrenheit(weather.temp)
+    : toCelsius(weather.temp);
+  return temperatureUnit;
+};
+
+export default converTemperatureUnit;
