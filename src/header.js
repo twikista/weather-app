@@ -4,7 +4,7 @@ const headerSection = () => {
   const fragment = new DocumentFragment();
 
   /******nav left section*****/
-  const logo = helper.createElement("h3", ["App-Logo"], null);
+  const logo = helper.createElement("h3", ["App-Logo"], { class: "teal" });
   const navLeft = helper.createElement("div", [logo], {
     class: "logo-container",
   });

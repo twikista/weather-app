@@ -6,9 +6,10 @@ import * as helper from "./helper";
 //import toggleWeatherUnit from "./convert-weather-unit";
 import headerSection from "./header";
 import mainSection from "./main";
+import footerSection from "./footer";
 
 const fragment = new DocumentFragment();
-fragment.append(headerSection(), mainSection());
+fragment.append(headerSection(), mainSection(), footerSection());
 const app = document.querySelector(".app");
 app.append(fragment);
 console.log(fragment);
