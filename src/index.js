@@ -1,34 +1,19 @@
 import "./style.css";
 import * as helper from "./helper";
-import classes from "./classes";
-import main from "./main-element";
-import events from "./events";
-import toggleWeatherUnit from "./convert-weather-unit";
+//import classes from "./classes";
+//import main from "./main-element";
+//import events from "./events";
+//import toggleWeatherUnit from "./convert-weather-unit";
+import headerSection from "./header";
+import mainSection from "./main";
 
-// const hello = document.createElement("h1");
-// const wrapper = document.createElement("div");
-//const wrapper1 = document.createElement("div");
-const hello = helper.createElement("h1", ["Hello World"], null);
+const fragment = new DocumentFragment();
+fragment.append(headerSection(), mainSection());
+const app = document.querySelector(".app");
+app.append(fragment);
+console.log(fragment);
 
-/*function addClass(ele, classes) {
-  classes.forEach((i) => ele.classList.add(i));
-}*/
+document.body.classList.add("bg-gray-900");
 
-// hello.textContent = "Hello World!";
-helper.addClass(hello, classes.mainHeader);
-
-/*wrapper.classList.add(
-  "flex",
-  "w-full",
-  "h-screen",
-  "justify-center",
-  "items-center"
-);*/
-
-document.body.classList.add("bg-gradient-to-b", "from-gray-700", "to-gray-900");
-
-//wrapper.append(hello, main);
-document.body.appendChild(main);
-
-events();
+//events();
 //toggleWeatherUnit();

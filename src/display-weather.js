@@ -1,15 +1,34 @@
 import * as helper from "./helper";
-import renderWeather from "./render-weather";
-import { weatherData } from "./transorm-data";
 import * as convert from "./convert-weather-unit";
 
-const currentWeatherCard = helper.createElement("article", [], {
-  class: "current-weather-card",
-});
 //const tempDesc = helper.createElement("p", null, null);
 //tempDesc.textContent = isToggled ? "Fahrenheit" : "Celsius";
 
 function displayWeather(weather, toggler) {
+  //create weather card header
+  const weatherHeader = helper.createElement("h3", ["Fri May 2023, NG"], null);
+  const cardHeader = helper.createElement("header", [weatherHeader], null);
+
+  //create weather card content
+  const temperature = helper.createElement("h1", null, null);
+  temperature.textContent = toggler
+    ? `${convert.toFahrenheit(weather.temp)}&deg;F`
+    : `${convert.toCelsius(weather.temp)}&deg;F`;
+  const cardMain = helper.createElement("div", [temperature], null);
+
+  //weather card
+  const currentWeatherCard = helper.createElement(
+    "article",
+    [cardHeader, cardMain],
+    {
+      class: "current-weather-card",
+    }
+  );
+
+  const mainElement = document.querySelector(".main-element");
+  mainElement.append(currentWeatherCard);
+  console.log(mainElement.lastChild.tagName);
+
   const temp = toggler ? console.log("Fahrenheit") : console.log("Celsius");
   const unit = toggler
     ? console.log(convert.toFahrenheit(weather.temp))

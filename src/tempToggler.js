@@ -6,7 +6,7 @@ const tempUnitToggler = helper.createElement("input", [], {
 });
 
 const currentTempUnit = helper.createElement("label", ["celsius"], {
-  for: "temp-unit-label",
+  for: "temp-unit-toggler",
 });
 
 const tempUnitContainer = helper.createElement(
