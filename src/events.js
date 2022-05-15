@@ -1,12 +1,10 @@
 import getData from "./fetch-data";
 import { weatherData } from "./transorm-data";
-import displayWeather from "./display-weather";
-export let isToggled = null;
 
 //get location from user input on form
 function getLocation() {
   const form = document.querySelector("form");
-  const input = form.elements["search-field"];
+  const input = form.elements["search-input"];
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = input.value;
@@ -17,9 +15,9 @@ function getLocation() {
 
 //toggle check box to switch between temperature states
 export const toggler = () => {
-  const toggle = document.querySelector("#temp-unit-toggler");
+  const toggle = document.querySelector("#temp-toggler");
   toggle.addEventListener("change", (e) => {
-    isToggled = toggle.checked;
+    const isToggled = toggle.checked;
     // displayWeather(weatherData, isToggled);
     return isToggled;
   });
