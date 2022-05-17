@@ -1,3 +1,4 @@
+import classes from "./classes";
 import * as helper from "./helper";
 
 const mainSection = () => {
@@ -9,7 +10,11 @@ const mainSection = () => {
   //main element
   const fragment = new DocumentFragment();
   fragment.append(section);
-  const main = helper.createElement("main", [fragment], null);
+  const main = helper.createElement("main", [fragment], {
+    class:
+      'w-full", "max-w-4xl flex flex-column justify-center items-center mx-auto',
+  });
+  helper.addClass(main, classes.mainElementStyle);
   return main;
 };
 

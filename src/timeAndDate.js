@@ -1,29 +1,3 @@
-const months = [
-  { id: 0, month: "Jan" },
-  { id: 1, month: "Feb" },
-  { id: 2, month: "Mar" },
-  { id: 3, month: "Apr" },
-  { id: 4, month: "May" },
-  { id: 5, month: "Jun" },
-  { id: 6, month: "Jul" },
-  { id: 7, month: "Aug" },
-  { id: 8, month: "Sep" },
-  { id: 9, month: "Oct" },
-  { id: 10, month: "Nov" },
-  { id: 11, month: "Dec" },
-];
-
-function mth(date) {
-  let bb = null;
-  months.forEach((i) => {
-    if (i.id === date) {
-      bb = i.month;
-    }
-  });
-  console.log(bb);
-  return bb;
-}
-
 //array of days of week
 const daysOfWeek = [
   { id: 0, day: "Sun" },
@@ -73,17 +47,5 @@ function renderUserTime(timeZoneOffset) {
   const dislayTime = `${day} ${hourAndMinutes}`;
   return dislayTime;
 }
-
-/*
-const date = userTime(-14400);
-const day = dayOfWeek(date.getDay());
-const hour = date.getHours();
-const minute = date.getMinutes();
-
-const h = hour < 10 ? "0" + hour : hour;
-const m = minute < 10 ? "0" + minute : minute;
-const mc = hour < 12 ? "AM" : "PM";
-const dislayTime = `${day} ${h}:${m}${mc}`;
-*/
 
 export default renderUserTime;

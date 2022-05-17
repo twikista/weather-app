@@ -33,6 +33,9 @@ const config = {
     ],
   },
   devtool: "inline-source-map",
+  devServer: {
+    static: "./dist",
+  },
 };
 
 module.exports = () => {

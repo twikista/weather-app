@@ -6,7 +6,6 @@ import weatherCard from "./weatherCard";
 export let weatherData = null;
 
 const tranformData = (data) => {
-  console.log(data);
   weatherData = [
     {
       weather: data.weather[0].main,

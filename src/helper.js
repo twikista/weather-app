@@ -15,4 +15,18 @@ const createElement = (tag, node, attribute) => {
   return element;
 };
 
-export { addClass, createElement };
+const degreeCharacter = (f) => {
+  const degreeChar = document.createElement("span");
+  degreeChar.innerHTML = `&deg;${f}`;
+  return degreeChar;
+};
+
+const addIcon = (keyword, styles) => {
+  const span = createElement("span", [keyword], {
+    class: "material-icons-outlined",
+  });
+  addClass(span, styles);
+  return span;
+};
+
+export { addClass, createElement, degreeCharacter, addIcon };
