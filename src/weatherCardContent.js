@@ -3,10 +3,14 @@ import converTemperatureUnit from "./convert-weather-unit";
 import classes from "./classes";
 const weatherCardContent = (weather) => {
   //weather icon
-  const weatherIcon = helper.createElement("img", [], {
+  /*const weatherIcon = helper.createElement("img", [], {
     src: weather.icon,
     alt: "weather-icon",
     class: "inline-block",
+  });*/
+
+  /* const weatherIcon = helper.createElement("span", ["cloud"], {
+    class: "material-icons-outlined text-8xl",
   });
   //weather description
   const weatherdescription = helper.createElement(
@@ -21,47 +25,70 @@ const weatherCardContent = (weather) => {
     { class: "flex col" }
   );
   //degree special character
-  const celsiusSpan = helper.createElement(
-    "span",
-    [helper.degreeCharacter("C")],
-    { class: "text-xs align-text-top" }
-  );
+  const deg = helper.special("&deg;");
+  // const celsiusSpan = helper.degreeCharacter("&#8451;");
+  const celsiusSpan = helper.createElement("span", ["C"], null);
+  //celsiusSpan.classList.add("text-2xl", "align-top", "inline-block", "pt-2");
   //temperature value
   const temperature = helper.createElement(
     "h1",
-    [weather.temp.toFixed(0), celsiusSpan],
+    [weather.temp.toFixed(0), deg, celsiusSpan],
     {
-      class: "temperature-value text-5xl",
+      class: "temperature-value text-8xl",
     }
   );
 
-  //feels like
-  const feelsLike = helper.createElement(
+  //maximum and minimum temperature
+  const high = helper.createElement(
+    "span",
+    ["H:", weather.maxTemp, helper.special("&deg;")],
+    null
+  );
+  const low = helper.createElement(
+    "span",
+    ["L:", weather.minTemp, helper.special("&deg;")],
+    null
+  );
+
+  const minMax = helper.createElement(
     "h5",
-    [
-      `feels like - ${weather.feelsLike.toFixed(0)}`,
-      helper.degreeCharacter(""),
-    ],
+    [high, `${helper.special("&mid;")}`, low],
     { class: "text-xs" }
   );
 
   //temperature and feelsLike wrapper
-  const weatherRight = helper.createElement(
-    "div",
-    [temperature, feelsLike],
-    null
-  );
+  const weatherRight = helper.createElement("div", [temperature, minMax], null);
 
   //weather
   const weatherWrapper = helper.createElement(
     "div",
     [weatherLeft, weatherRight],
     {
-      class: "flex",
+      class: "flex bg-slate-800",
     }
-  );
+  );*/
 
   //other weather details
+  //feels like
+  /*const feelsLike = helper.createElement(
+    "h5",
+    [`feels like - ${weather.feelsLike.toFixed(0)}`, helper.special("&deg;")],
+    { class: "text-xs" }
+  );*/
+
+  const feelsLikeIcon = helper.createElement("span", ["thermostat"], {
+    class: "material-icons-outlined",
+  });
+  const feelsLike = helper.createElement(
+    "p",
+    [`feels like - ${weather.feelsLike.toFixed(0)}`, helper.special("&deg;")],
+    null
+  );
+  const feelsLikeDiv = helper.createElement(
+    "div",
+    [feelsLikeIcon, feelsLike],
+    null
+  );
 
   //humidity
   const humidityIcon = helper.createElement("span", ["water_drop"], {
@@ -69,7 +96,7 @@ const weatherCardContent = (weather) => {
   });
   const humidity = helper.createElement(
     "p",
-    [`Humidity: ${weather.humidity}%`],
+    [`Humidity: ${weather.humidity}`],
     null
   );
   const humidityDiv = helper.createElement(
@@ -93,17 +120,14 @@ const weatherCardContent = (weather) => {
   const pressureIcon = helper.createElement("span", ["science"], {
     class: "material-icons-outlined",
   });
-  const pressure = helper.createElement(
-    "p",
-    [`pressure: ${weather.pressure}`],
-    null
-  );
+  const pressure = helper.createElement("p", [`pressure: 1020`], null);
   const pressureDiv = helper.createElement(
     "div",
     [pressureIcon, pressure],
     null
   );
 
+  /*
   //maximum temperature
   const maxTempIcon = helper.createElement("i", null, {
     class: "fas fa-temperature-high",
@@ -135,16 +159,18 @@ const weatherCardContent = (weather) => {
 
   const otherWeatherDetails = helper.createElement(
     "div",
-    [humidityDiv, windDiv, pressureDiv, minTempDiv, maxTempDiv],
+    [humidityDiv, windDiv, pressureDiv, feelsLikeDiv],
     null
   );
 
   //fragment
   const fragment = new DocumentFragment();
-  fragment.append(weatherWrapper, otherWeatherDetails);
+  fragment.append(otherWeatherDetails);
 
   //
-  const div = helper.createElement("div", [fragment], null);
+  const div = helper.createElement("div", [fragment], {
+    class: "bg-slate-800",
+  });
   return div;
 };
 

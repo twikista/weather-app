@@ -8,7 +8,9 @@ const weatherCard = (weather) => {
     const article = helper.createElement(
       "article",
       [weatherCardHeader(item), weatherCardContent(item)],
-      { class: "flex flex-col w-1/2 border bg-gray-800" }
+      {
+        class: "grid grid-cols-1 grid-rows-2 w-4/5 rounded h-full mx-auto my-0",
+      }
     );
     main.append(article);
   });

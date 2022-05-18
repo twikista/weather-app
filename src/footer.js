@@ -21,7 +21,10 @@ const footerSection = () => {
   const fragment = new DocumentFragment();
   fragment.append(githubLink, twitterLink, linkedinLink);
   //footer element
-  const footer = helper.createElement("footer", [fragment], null);
+  const footer = helper.createElement("footer", [fragment], {
+    class:
+      "min-h-[50px] border-t-[1px] border-gray-500 w-full flex flex-row mt-2",
+  });
 
   return footer;
 };

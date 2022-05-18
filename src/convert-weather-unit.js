@@ -30,9 +30,10 @@ const setTemperatureUnit = (isToggled, weather) => {
   const temp = isToggled
     ? toFahrenheit(weather[0].temp.toFixed(0))
     : weather[0].temp.toFixed(0);
+
   temperatureLabel.append(
     temp,
-    isToggled ? helper.degreeCharacter("F") : helper.degreeCharacter("C")
+    isToggled ? helper.special("&deg;F") : helper.special("&deg;C")
   );
 };
 

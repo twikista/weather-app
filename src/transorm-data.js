@@ -1,11 +1,11 @@
 //import { isToggled } from "./events";
 
-import weatherCard from "./weatherCard";
+//import weatherCard from "./weatherCard";
 
 //import displayWeather from "./display-weather";
-export let weatherData = null;
+//export let weatherData = null;
 
-const tranformData = (data) => {
+/*const tranformData = (data) => {
   weatherData = [
     {
       weather: data.weather[0].main,
@@ -32,4 +32,4 @@ const tranformData = (data) => {
   //return weatherData;
 };
 
-export default tranformData;
+export default tranformData;*/

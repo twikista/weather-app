@@ -1,6 +1,8 @@
 import setTemperatureUnit from "./convert-weather-unit";
-import getData from "./fetch-data";
-import { weatherData } from "./transorm-data";
+//import getData from "./fetch-data";
+// import { weatherData } from "./transorm-data";
+import { weatherData } from "./data";
+import weatherCard from "./weatherCard";
 
 //get location from user input on form
 function getLocation() {
@@ -8,9 +10,10 @@ function getLocation() {
   const input = form.elements["search-input"];
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    const location = input.value;
-    getData(location);
-    console.log(location);
+    // const location = input.value;
+    // getData(location);
+    weatherCard(weatherData);
+    console.log(weatherData);
   });
 }
 
@@ -34,10 +37,10 @@ function togglerSwitch(isToggled) {
   const fahrenheit = document.querySelector(".fahrenheit");
   if (isToggled) {
     toggleOn.classList.remove("hidden");
-    celsius.classList.remove("text-red-500");
+    celsius.classList.remove("text-sky-500");
     celsius.classList.add("text-gray-400");
     fahrenheit.classList.remove("text-gray-400");
-    fahrenheit.classList.add("text-red-500");
+    fahrenheit.classList.add("text-sky-500");
     toggleOff.classList.add("hidden");
   }
 
@@ -45,10 +48,10 @@ function togglerSwitch(isToggled) {
     toggleOn.classList.add("hidden");
     toggleOff.classList.remove("hidden");
 
-    celsius.classList.add("text-red-500");
+    celsius.classList.add("text-sky-500");
     celsius.classList.remove("text-gray-400");
     fahrenheit.classList.add("text-gray-400");
-    fahrenheit.classList.remove("text-red-500");
+    fahrenheit.classList.remove("text-sky-500");
   }
 }
 

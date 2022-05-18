@@ -15,10 +15,19 @@ const createElement = (tag, node, attribute) => {
   return element;
 };
 
-const degreeCharacter = (f) => {
+const degreeCharacter = (char) => {
   const degreeChar = document.createElement("span");
-  degreeChar.innerHTML = `&deg;${f}`;
+  // const letter = createElement("span", [f], null);
+  degreeChar.innerHTML = char;
+  //degreeChar.classList.add("text-sm");
   return degreeChar;
+};
+
+const special = (char) => {
+  const character = document.createElement("span");
+  character.innerHTML = char;
+  const rechar = character.textContent;
+  return rechar;
 };
 
 const addIcon = (keyword, styles) => {
@@ -29,4 +38,4 @@ const addIcon = (keyword, styles) => {
   return span;
 };
 
-export { addClass, createElement, degreeCharacter, addIcon };
+export { addClass, createElement, degreeCharacter, addIcon, special };
