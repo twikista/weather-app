@@ -5,7 +5,7 @@ import renderUserTime from "./timeAndDate";
 const weatherCardHeader = (weather) => {
   //header left
   const locationIcon = helper.addIcon("location_on", [classes.icons]);
-  locationIcon.classList.add("text-xs");
+  locationIcon.classList.add("text-xs", "text-indigo-400");
   const city = helper.createElement("span", [`${weather.city}, `], null);
   const location = helper.createElement(
     "h3",
@@ -17,9 +17,9 @@ const weatherCardHeader = (weather) => {
     [`${renderUserTime(weather.timeZone)}`],
     null
   );
-  const headerLeft = helper.createElement("div", [location, localTime], {
+  const headerTop = helper.createElement("div", [location, localTime], {
     class:
-      "header-left w-full flex justify-around items center text-sm text-indigo-200 font-barlow  font-light",
+      "header-top w-full flex justify-between items center text-sm text-indigo-200 font-barlow  font-light",
   });
 
   const weatherIcon = helper.createElement("span", ["cloud"], {
@@ -27,15 +27,15 @@ const weatherCardHeader = (weather) => {
   });
   //weather description
   const weatherdescription = helper.createElement("h5", [weather.weatherdesc], {
-    class: "text-indigo-500",
+    class: "gray-400 font-fira font-light",
   });
+
   //weather icon and description wrapper
   const weatherLeft = helper.createElement(
     "div",
     [weatherdescription, weatherIcon],
     {
-      class:
-        "flex flex-col items-center font-barlow font-semibold text-sm border-r-[1px] border-slate-700 pr-2",
+      class: "flex flex-col items-center text-sm border-slate-600 pr-2 pt-3",
     }
   );
   //degree special character
@@ -48,7 +48,7 @@ const weatherCardHeader = (weather) => {
     "h1",
     [weather.temp.toFixed(0), deg, celsiusSpan],
     {
-      class: "temperature-value text-5xl text-purple-400",
+      class: "temperature-value text-5xl sm:text-7xl text-purple-400 mb-1",
     }
   );
 
@@ -64,11 +64,18 @@ const weatherCardHeader = (weather) => {
     null
   );
 
-  const minMax = helper.createElement(
-    "h5",
-    [high, `${helper.special("&mid;")}`, low],
-    { class: "text-xs" }
-  );
+  const mid = helper.degreeCharacter("&mid;");
+  mid.classList.add("px-[1px]", "text-base");
+
+  const minMax = helper.createElement("h5", [high, mid, low], {
+    class:
+      "text-sm font-barlow semibold flex items-center justify-center text-indigo-300",
+  });
+
+  const tempWrapper = helper.createElement("div", [temperature, minMax], {
+    class:
+      "temp-wrapper w-4/5 flex-auto flex flex-col items-center justify-center",
+  });
 
   //header right
   const checkbox = helper.createElement("input", null, {
@@ -79,15 +86,15 @@ const weatherCardHeader = (weather) => {
   //label
   const toggleOnIcon = helper.createElement("span", ["toggle_on"], {
     class:
-      "material-icons-outlined text-3xl  hidden toggle-on transition duration-700 ease-in ",
+      "material-icons-outlined text-2xl  hidden toggle-on transition-[display] duration-700 ease-in ",
   });
 
   const toggleOffIcon = helper.createElement("span", ["toggle_off"], {
     class:
-      "material-icons-outlined text-3xl toggle-off transition duration-700 ease-in",
+      "material-icons-outlined text-2xl toggle-off transition-[display] duration-700 ease-in",
   });
   const label = helper.createElement("label", [toggleOffIcon, toggleOnIcon], {
-    class: "toggler px-1 flex text-indigo-300 ",
+    class: "toggler px-1 flex text-xs text-indigo-300 ",
     for: "temp-toggler",
   });
 
@@ -100,7 +107,7 @@ const weatherCardHeader = (weather) => {
     "align-text-center",
     "fahrenheit",
     "text-gray-400",
-    "text-base",
+    "text-sm",
   ]);
   const celsiusSymbol = helper.createElement(
     "span",
@@ -111,42 +118,51 @@ const weatherCardHeader = (weather) => {
     "align-text-center",
     "celsius",
     "text-sky-500",
-    "text-base",
+    "text-sm",
   ]);
 
-  const togglerWrapper = helper.createElement(
+  const togglers = helper.createElement(
     "div",
     [celsiusSymbol, checkbox, label, fahrenheitSymbol],
-    { class: "flex items-center font-akshar font-700" }
+    { class: "togglers flex items-center font-akshar font-semibold" }
   );
-  const headerRight = helper.createElement("div", [togglerWrapper], {
-    class: "header-right flex items-center h-8 self-end",
+  const togglersWrapper = helper.createElement("div", [togglers], {
+    class: "togglers-wrapper flex items-center self-end mt-auto",
   });
 
   //temperature and minmax wrapper
   const weatherRight = helper.createElement(
     "div",
-    [temperature, minMax, headerRight],
-    { class: "flex flex-col justify-center items-center" }
+    [tempWrapper, togglersWrapper],
+    {
+      class: "weather-right flex flex-col justify-center items-center",
+    }
   );
 
   //weather
+  const divMid = helper.createElement("span", [], {
+    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
+  });
+
   const weatherWrapper = helper.createElement(
     "div",
     [weatherLeft, weatherRight],
     {
-      class: "grid grid-cols-[1fr_2fr] grid-rows-1 gap-x-1",
+      class:
+        "weather-wrappper grid grid-cols-[1fr_2fr] grid-rows-1 gap-x-1 w-full h-full",
     }
   );
 
   const fragment = new DocumentFragment();
-  fragment.append(headerLeft, weatherWrapper);
+  fragment.append(headerTop, weatherWrapper);
 
   const header = helper.createElement("header", [fragment], {
     class:
-      "card-header grid grid-rows-[auto_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-5 mt-2 pt-2 px-4 rounded-lg",
+      "card-header grid grid-rows-[30px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
   });
   return header;
 };
 
 export default weatherCardHeader;
+
+//box-shadow: rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px;

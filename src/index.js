@@ -7,15 +7,25 @@ import events from "./events";
 import headerSection from "./header";
 import mainSection from "./main";
 import footerSection from "./footer";
-import classes from "./classes";
+// import classes from "./classes";
 
 const fragment = new DocumentFragment();
 fragment.append(headerSection(), mainSection(), footerSection());
 const app = document.querySelector(".app");
 app.append(fragment);
-helper.addClass(app, ["grid", "grid-rows-[auto_1fr_auto]", "h-screen"]);
+app.classList.add(
+  "grid",
+  "grid-rows-[auto_1fr_auto]",
+  "min-h-screen",
+  "w-full"
+);
 
-document.body.classList.add("bg-slate-900", "text-gray-200", "h-screen");
+document.body.classList.add(
+  "bg-gray-900",
+  "text-gray-200",
+  "min-h-screen",
+  "w-full"
+);
 
 events();
 //toggleWeatherUnit();

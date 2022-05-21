@@ -1,18 +1,30 @@
 import setTemperatureUnit from "./convert-weather-unit";
-//import getData from "./fetch-data";
+import getData from "./fetch-data";
 // import { weatherData } from "./transorm-data";
 import { weatherData } from "./data";
 import weatherCard from "./weatherCard";
+import loading from "./loading";
+
+let isLoading = true;
 
 //get location from user input on form
 function getLocation() {
   const form = document.querySelector("form");
   const input = form.elements["search-input"];
+  const main = document.querySelector("main");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    // const location = input.value;
-    // getData(location);
-    weatherCard(weatherData);
+    //const location = input.value;
+    //getData(location);
+    if (isLoading) {
+      loading();
+    }
+
+    setTimeout(() => {
+      isLoading = false;
+      console.log(isLoading);
+      weatherCard(weatherData);
+    }, 1000);
     console.log(weatherData);
   });
 }
@@ -55,10 +67,19 @@ function togglerSwitch(isToggled) {
   }
 }
 
+const focusInput = () => {
+  const form = document.querySelector("form input");
+  const callToActionBtn = document.querySelector(".call-to-action");
+  callToActionBtn.addEventListener("click", (e) => {
+    form.focus();
+  });
+};
+
 //initialize events
 const events = () => {
   getLocation();
   toggler();
+  focusInput();
 };
 
 export default events;

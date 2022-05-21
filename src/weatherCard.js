@@ -1,6 +1,7 @@
 import * as helper from "./helper";
 import weatherCardContent from "./weatherCardContent";
 import weatherCardHeader from "./weatherCardheader";
+import loading from "./loading";
 const weatherCard = (weather) => {
   const main = document.querySelector("main");
   main.innerHTML = "";
@@ -9,7 +10,7 @@ const weatherCard = (weather) => {
       "article",
       [weatherCardHeader(item), weatherCardContent(item)],
       {
-        class: "grid grid-cols-1 grid-rows-2 w-4/5 rounded h-full mx-auto my-0",
+        class: "grid grid-cols-1 grid-rows-2 rounded h-full mt-3 mb-5 px-3",
       }
     );
     main.append(article);

@@ -1,11 +1,11 @@
 //import { isToggled } from "./events";
 
-//import weatherCard from "./weatherCard";
+import weatherCard from "./weatherCard";
 
 //import displayWeather from "./display-weather";
-//export let weatherData = null;
+export let weatherData = null;
 
-/*const tranformData = (data) => {
+const tranformData = (data) => {
   weatherData = [
     {
       weather: data.weather[0].main,
@@ -24,12 +24,12 @@
     },
   ];
   // isToggled = weatherData;
-  console.log(weatherData);
+  // console.log(weatherData);
   //persistData(weatherData);
-  //console.log(weatherData);
+  console.log(weatherData);
   weatherCard(weatherData);
   //display();
   //return weatherData;
 };
 
-export default tranformData;*/
+export default tranformData;

@@ -1,17 +1,16 @@
-const classes = {
-  appStyles: ["h-screen"],
-  mainElementStyle: ["w-full", "max-w-4xl"],
-  headerElement: ["w-full", "h-8"],
-  navElement: ["flex", "px-2", "w-full", "h-full"],
-  iconsTemp: ["text-sm", "align-text-bottom"],
-  iconTtoggle: ["text-[32px]"],
-  icons: ["text-base"],
+const styles = {
+  cardStyles:
+    "flex flex-col items-center justify-center text-center py-6 bg-slate-900 rounded-lg text-slate-300",
+  transition: "transition-color ease-in dutation-300",
+  hover: "hover:text-sky-500 hover:scale-105",
+  flexRowCenter: "flex flex-row items-center justify-center",
+  flexColCenter: "flex flex-col justify-center items-center",
 };
 
-export const styles = [
-  { appDivStylea: "h-screen" },
-  { mainElementStyles: 'w-full", "max-w-4xl' },
-  { navElementStyles: "flex px-2 w-full h-full" },
-];
+/*const styles = [
+  {
+    cardStyles: "flex flex-col items-center justify-center text-center border",
+  },
+];*/
 
-export default classes;
+export default styles;
