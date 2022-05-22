@@ -1,7 +1,7 @@
 import tranformData from "./transorm-data";
 import loading from "./loading";
 import { checkError, displayOnError } from "./error";
-import * as helper from "./helper";
+//import * as helper from "./helper";
 
 let isLoading = true;
 const getData = async (city) => {
@@ -12,7 +12,7 @@ const getData = async (city) => {
     checkError(response);
     isLoading = false;
     const data = await response.json();
-    //tranformData(data);
+    tranformData(data);
     console.log(data);
     return data;
   } catch (err) {

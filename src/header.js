@@ -22,7 +22,7 @@ const headerSection = () => {
     id: "search-input",
     placeholder: "Enter weather location ",
     class:
-      "bg-transparent  outline-none apperance-none pl-4 py-2 h-full placeholder:text-sm placeholder:text-gray-300",
+      "bg-transparent  outline-none apperance-none pl-4 py-2 h-full placeholder:text-sm placeholder:text-gray-300 font-fira",
     autocomplete: "off",
   });
 

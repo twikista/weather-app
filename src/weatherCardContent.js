@@ -77,7 +77,7 @@ const weatherCardContent = (weather) => {
   );*/
 
   const feelsLikeIcon = helper.createElement("span", ["thermostat"], {
-    class: "material-icons-outlined",
+    class: `material-icons-outlined ${styles.icons}`,
   });
   const feelsLike = helper.createElement(
     "p",
@@ -90,7 +90,7 @@ const weatherCardContent = (weather) => {
 
   //humidity
   const humidityIcon = helper.createElement("span", ["water_drop"], {
-    class: "material-icons-outlined",
+    class: `material-icons-outlined ${styles.icons}`,
   });
   const humidity = helper.createElement(
     "p",
@@ -103,7 +103,7 @@ const weatherCardContent = (weather) => {
 
   //wind
   const windIcon = helper.createElement("span", ["air"], {
-    class: "material-icons-outlined",
+    class: `material-icons-outlined ${styles.icons}`,
   });
   const wind = helper.createElement(
     "p",
@@ -116,9 +116,9 @@ const weatherCardContent = (weather) => {
 
   //pressure
   const pressureIcon = helper.createElement("span", ["science"], {
-    class: "material-icons-outlined",
+    class: `material-icons-outlined ${styles.icons}`,
   });
-  const pressure = helper.createElement("p", [`pressure: 1020`], null);
+  const pressure = helper.createElement("p", [weather.pressure], null);
   const pressureDiv = helper.createElement("div", [pressureIcon, pressure], {
     class: styles.cardStyles,
   });
@@ -157,7 +157,7 @@ const weatherCardContent = (weather) => {
   fragment.append(humidityDiv, windDiv, pressureDiv, feelsLikeDiv);
   const otherWeatherDetails = helper.createElement("div", [fragment], {
     class:
-      "card-bottom bg-slate-800 grid grid-cols-2 grid-rows-2 gap-x-3 items-center justify-center px-4 py-2 font-barlow rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] mb-3 ",
+      "card-bottom bg-slate-800 grid grid-cols-2 grid-rows-2 gap-x-3 items-center justify-center px-4 py-2 font-fira text-sm rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] mb-3 ",
   });
 
   //fragment

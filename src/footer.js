@@ -11,15 +11,15 @@ const footerSection = () => {
   //links
   const githubLink = helper.createElement("a", [github], {
     href: "https://github.com/twikista",
-    class: `${styles.transition} ${styles.hover}`,
+    class: `${styles.footerIcons}`,
   });
   const twitterLink = helper.createElement("a", [twitter], {
     href: "https://twitter.com/aaronanama",
-    class: `${styles.transition} ${styles.hover}`,
+    class: `${styles.footerIcons}`,
   });
   const linkedinLink = helper.createElement("a", [linkedin], {
     href: "https://www.linkedin.com/in/aaronanama",
-    class: `${styles.transition} ${styles.hover}`,
+    class: `${styles.footerIcons}`,
   });
 
   //footer-social icons wrapper
@@ -30,11 +30,13 @@ const footerSection = () => {
   );
 
   //copyright info
-  const copyRightSymbol = helper.special("&copy;");
+  const copyRightSymbol = helper.special("&copy;2022");
   const copyRight = helper.createElement(
     "p",
-    [copyRightSymbol, "aaronanama, 2022"],
-    { class: "font-akshar font-light text-sky-500 text-sm" }
+    [copyRightSymbol, " aaronanama"],
+    {
+      class: " font-normal text-purple-300 text-sm",
+    }
   );
 
   //wrapper
@@ -47,10 +49,12 @@ const footerSection = () => {
   fragment.append(wrapper);
   //footer element
   const footer = helper.createElement("footer", [fragment], {
-    class: `${styles.flexRowCenter} min-h-[50px] border-t-[1px] border-slate-500 w-full p-2 text-indigo-300 `,
+    class: `${styles.flexRowCenter} min-h-[50px] bg-gray-800 border-gray-700 w-full p-2 text-indigo-300 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]`,
   });
 
   return footer;
 };
 
 export default footerSection;
+
+//shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]",

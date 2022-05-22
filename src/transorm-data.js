@@ -15,6 +15,7 @@ const tranformData = (data) => {
       minTemp: data.main.temp_min,
       feelsLike: data.main.feels_like,
       humidity: data.main.humidity,
+      pressure: data.main.pressure,
       wind: data.wind.speed,
       country: data.sys.country,
       city: data.name,

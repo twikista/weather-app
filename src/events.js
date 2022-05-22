@@ -1,9 +1,9 @@
 import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
 // import { weatherData } from "./transorm-data";
-import { weatherData } from "./data";
-import weatherCard from "./weatherCard";
-import loading from "./loading";
+//import { weatherData } from "./data";
+//import weatherCard from "./weatherCard";
+//import loading from "./loading";
 
 let isLoading = true;
 
@@ -14,18 +14,18 @@ function getLocation() {
   const main = document.querySelector("main");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    //const location = input.value;
-    //getData(location);
-    if (isLoading) {
-      loading();
+    const location = input.value;
+    getData(location);
+    /*if (isLoading) {
+      loading(isLoading);
     }
 
     setTimeout(() => {
-      isLoading = false;
       console.log(isLoading);
       weatherCard(weatherData);
-    }, 1000);
-    console.log(weatherData);
+      isLoading = false;
+    }, 3000);
+    console.log(weatherData);*/
   });
 }
 
@@ -48,22 +48,24 @@ function togglerSwitch(isToggled) {
   const celsius = document.querySelector(".celsius");
   const fahrenheit = document.querySelector(".fahrenheit");
   if (isToggled) {
+    //switch toggler
     toggleOn.classList.remove("hidden");
-    celsius.classList.remove("text-sky-500");
-    celsius.classList.add("text-gray-400");
-    fahrenheit.classList.remove("text-gray-400");
-    fahrenheit.classList.add("text-sky-500");
     toggleOff.classList.add("hidden");
+    //switch between active weather unit
+    celsius.classList.remove("text-purple-400");
+    celsius.classList.add("text-gray-500");
+    fahrenheit.classList.remove("text-gray-500");
+    fahrenheit.classList.add("text-purple-400");
   }
 
   if (!isToggled) {
     toggleOn.classList.add("hidden");
     toggleOff.classList.remove("hidden");
 
-    celsius.classList.add("text-sky-500");
-    celsius.classList.remove("text-gray-400");
-    fahrenheit.classList.add("text-gray-400");
-    fahrenheit.classList.remove("text-sky-500");
+    celsius.classList.add("text-purple-400");
+    celsius.classList.remove("text-gray-500");
+    fahrenheit.classList.add("text-gray-500");
+    fahrenheit.classList.remove("text-purple-400");
   }
 }
 

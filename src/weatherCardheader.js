@@ -21,21 +21,36 @@ const weatherCardHeader = (weather) => {
     class:
       "header-top w-full flex justify-between items center text-sm text-indigo-200 font-barlow  font-light",
   });
+  const arrow = helper.createElement("span", ["arrow_right"], {
+    class: "material-icons-outlined text-pink-500 align-middle",
+  });
 
-  const weatherIcon = helper.createElement("span", ["cloud"], {
+  /*const weatherIcon = helper.createElement("span", ["cloud"], {
     class: "material-icons-outlined text-8xl",
+  });*/
+
+  //weather icon
+  const weatherIcon = helper.createElement("img", [], {
+    src: weather.icon,
+    alt: "weather-icon",
+    class: "self-start",
   });
+
   //weather description
-  const weatherdescription = helper.createElement("h5", [weather.weatherdesc], {
-    class: "gray-400 font-fira font-light",
-  });
+  const weatherdescription = helper.createElement(
+    "h5",
+    [arrow, weather.weatherdesc],
+    {
+      class: "gray-400 font-fira font-light text-xs self-start ",
+    }
+  );
 
   //weather icon and description wrapper
   const weatherLeft = helper.createElement(
     "div",
     [weatherdescription, weatherIcon],
     {
-      class: "flex flex-col items-center text-sm border-slate-600 pr-2 pt-3",
+      class: "flex flex-col items-center justify-center text-sm pt-3",
     }
   );
   //degree special character
@@ -94,7 +109,7 @@ const weatherCardHeader = (weather) => {
       "material-icons-outlined text-2xl toggle-off transition-[display] duration-700 ease-in",
   });
   const label = helper.createElement("label", [toggleOffIcon, toggleOnIcon], {
-    class: "toggler px-1 flex text-xs text-indigo-300 ",
+    class: "toggler px-1 flex text-xs text-indigo-300 cursor-pointer",
     for: "temp-toggler",
   });
 
@@ -106,7 +121,7 @@ const weatherCardHeader = (weather) => {
   helper.addClass(fahrenheitSymbol, [
     "align-text-center",
     "fahrenheit",
-    "text-gray-400",
+    "text-gray-500",
     "text-sm",
   ]);
   const celsiusSymbol = helper.createElement(
@@ -117,14 +132,16 @@ const weatherCardHeader = (weather) => {
   helper.addClass(celsiusSymbol, [
     "align-text-center",
     "celsius",
-    "text-sky-500",
+    "text-purple-400",
     "text-sm",
   ]);
 
   const togglers = helper.createElement(
     "div",
     [celsiusSymbol, checkbox, label, fahrenheitSymbol],
-    { class: "togglers flex items-center font-akshar font-semibold" }
+    {
+      class: "togglers flex items-center font-akshar font-semibold",
+    }
   );
   const togglersWrapper = helper.createElement("div", [togglers], {
     class: "togglers-wrapper flex items-center self-end mt-auto",
@@ -149,7 +166,7 @@ const weatherCardHeader = (weather) => {
     [weatherLeft, weatherRight],
     {
       class:
-        "weather-wrappper grid grid-cols-[1fr_2fr] grid-rows-1 gap-x-1 w-full h-full",
+        "weather-wrappper grid grid-cols-[1fr_1fr] grid-rows-1 gap-x-2 w-full h-full",
     }
   );
 
