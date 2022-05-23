@@ -1,11 +1,12 @@
 import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
-// import { weatherData } from "./transorm-data";
+import { weatherData } from "./transorm-data";
+import onPageLoad from "./home";
 //import { weatherData } from "./data";
 //import weatherCard from "./weatherCard";
 //import loading from "./loading";
 
-let isLoading = true;
+//let isLoading = true;
 
 //get location from user input on form
 function getLocation() {
@@ -16,6 +17,7 @@ function getLocation() {
     e.preventDefault();
     const location = input.value;
     getData(location);
+    input.value = "";
     /*if (isLoading) {
       loading(isLoading);
     }
@@ -31,12 +33,10 @@ function getLocation() {
 
 //toggle check box to switch between temperature states
 const toggler = () => {
-  const toggle = document.querySelector("main");
-  toggle.addEventListener("change", (e) => {
+  const mainElement = document.querySelector("main");
+  mainElement.addEventListener("change", (e) => {
     const target = e.target;
-    console.log(target.checked);
     const isToggled = target.checked;
-    console.log(weatherData);
     setTemperatureUnit(isToggled, weatherData);
     togglerSwitch(isToggled);
   });
@@ -77,13 +77,24 @@ const focusInput = () => {
   });
 };
 
+//home
+
+const backToHome = () => {
+  const appLogo = document.querySelector(".app-logo");
+  const mainElement = document.querySelector("main");
+  appLogo.addEventListener("click", (e) => {
+    mainElement.innerHTML = "";
+    mainElement.append(onPageLoad());
+    return mainElement;
+  });
+};
+
 //initialize events
 const events = () => {
   getLocation();
   toggler();
   focusInput();
+  backToHome();
 };
 
 export default events;
-
-//console.log(form.elements);

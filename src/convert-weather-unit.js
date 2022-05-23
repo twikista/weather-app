@@ -14,16 +14,6 @@ function toCelsius(kelvinUnit) {
   return celsius.toFixed(0);
 }
 
-/*
-const converTemperatureUnit = (weather) => {
-  const isToggled = toggler();
-  const temperatureUnit = isToggled
-    ? toFahrenheit(weather.temp)
-    : toCelsius(weather.temp);
-  return temperatureUnit;
-};
-*/
-
 const setTemperatureUnit = (isToggled, weather) => {
   const temperatureLabel = document.querySelector(".temperature-value");
   temperatureLabel.innerHTML = "";

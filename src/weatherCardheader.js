@@ -19,10 +19,10 @@ const weatherCardHeader = (weather) => {
   );
   const headerTop = helper.createElement("div", [location, localTime], {
     class:
-      "header-top w-full flex justify-between items center text-sm text-indigo-200 font-barlow  font-light",
+      "header-top w-full flex justify-between items center text-sm text-indigo-200 font-barlow  font-light pt-2",
   });
   const arrow = helper.createElement("span", ["arrow_right"], {
-    class: "material-icons-outlined text-pink-500 align-middle",
+    class: "material-icons-outlined text-pink-500 align-middle ",
   });
 
   /*const weatherIcon = helper.createElement("span", ["cloud"], {
@@ -33,7 +33,7 @@ const weatherCardHeader = (weather) => {
   const weatherIcon = helper.createElement("img", [], {
     src: weather.icon,
     alt: "weather-icon",
-    class: "self-start",
+    class: "self-start -mt-5 w-[110px] h-[110px]",
   });
 
   //weather description
@@ -41,7 +41,8 @@ const weatherCardHeader = (weather) => {
     "h5",
     [arrow, weather.weatherdesc],
     {
-      class: "gray-400 font-fira font-light text-xs self-start ",
+      class:
+        "gray-400 font-fira font-light text-xs self-start justify-self-start w-[115px]",
     }
   );
 
@@ -175,7 +176,7 @@ const weatherCardHeader = (weather) => {
 
   const header = helper.createElement("header", [fragment], {
     class:
-      "card-header grid grid-rows-[30px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
+      "card-header grid grid-rows-[50px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
   });
   return header;
 };

@@ -1,7 +1,6 @@
 import tranformData from "./transorm-data";
 import loading from "./loading";
 import { checkError, displayOnError } from "./error";
-//import * as helper from "./helper";
 
 let isLoading = true;
 const getData = async (city) => {
@@ -17,9 +16,6 @@ const getData = async (city) => {
     return data;
   } catch (err) {
     displayOnError(err, isLoading);
-
-    //console.log(err.message);
-    //console.log(isLoading);
   }
 };
 

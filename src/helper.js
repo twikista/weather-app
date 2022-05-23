@@ -15,14 +15,14 @@ const createElement = (tag, node, attribute) => {
   return element;
 };
 
+//create pecial character in a span
 const degreeCharacter = (char) => {
   const degreeChar = document.createElement("span");
-  // const letter = createElement("span", [f], null);
   degreeChar.innerHTML = char;
-  //degreeChar.classList.add("text-sm");
   return degreeChar;
 };
 
+//special character as a string
 const special = (char) => {
   const character = document.createElement("span");
   character.innerHTML = char;

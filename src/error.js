@@ -2,7 +2,7 @@ import * as helper from "./helper";
 
 export function checkError(response) {
   if (response.status !== 200) {
-    throw new Error("Error processing your request");
+    throw new Error("Can't get weather details");
   }
   return response;
 }
@@ -10,40 +10,44 @@ export function checkError(response) {
 export function displayOnError(err, isLoading) {
   const sadFace = helper.special("&lpar;&gt;&lowbar;&lt;&rpar;");
   const sadFaceSpan = helper.createElement("span", [sadFace], {
-    class: "text-8xl leading-normal ",
+    class:
+      "text-4xl leading-normal tracking-tighter font-medium mb-1 sm:text-6xl sm:mb-3",
   });
-  const onErrorPara = helper.createElement("p", [err.message], null);
+  const errorMessage = helper.createElement("h2", [err.message], {
+    class: "text-2xl sm:text-4xl font-medium",
+  });
 
   const fixSuggestionHeading = helper.createElement(
     "h3",
     ["try the following:"],
     null
   );
-  const firstLi = helper.createElement(
-    "li",
-    ["check, to ensure you are connected to the internet"],
+  const dashOne = helper.degreeCharacter("&hyphen;");
+  dashOne.classList.add("pr-[1px]");
+  const dashTwo = helper.degreeCharacter("&hyphen;");
+  dashTwo.classList.add("pr-[1px]");
+
+  const fixOne = helper.createElement(
+    "p",
+    [dashOne, "check your internet connection"],
     null
   );
-  const secondLi = helper.createElement(
-    "li",
-    ["ensure the location is correctky spelt"],
+  const fixTwo = helper.createElement(
+    "p",
+    [dashTwo, "ensure weather location is correctly spelt"],
     null
   );
 
-  const ul = helper.createElement("ul", [firstLi, secondLi], {
-    class: "list-disc list-inside indent-6 leading-loose",
+  const fixSuggestion = helper.createElement("div", [fixOne, fixTwo], {
+    class: "border-[1px] border-slate-400 rounded-lg px-2 py-2 mt-5",
   });
-  const fixSuggestion = helper.createElement(
-    "div",
-    [fixSuggestionHeading, ul],
-    null
-  );
 
   const onErrorDiv = helper.createElement(
     "div",
-    [sadFaceSpan, onErrorPara, fixSuggestion],
+    [sadFaceSpan, errorMessage, fixSuggestion],
     {
-      class: "flex flex-col items-center justify-center font-sanspro",
+      class:
+        "flex flex-col items-center justify-center font-sanspro text-slate-300 text-sm sm:text-base w-full mt-[-100px]",
     }
   );
   const main = document.querySelector("main");
@@ -53,16 +57,3 @@ export function displayOnError(err, isLoading) {
   console.log(isLoading);
   return main;
 }
-
-/*const main = document.querySelector("main");
-const sadFace = helper.special("&lpar;&gt;&lowbar;&lt;&rpae;");
-const sadFaceSpan = helper.createElement("span"[sadFace], null);
-const onErrorPara = helper.createElement("p", [
-  "Something went wrong while processing your request. try again",
-]);
-const onErrorDiv = helper.createElement(
-  "div"[(sadFaceSpan, onErrorPara)],
-  null
-);
-main.append(onErrorDiv);
-return main;*/

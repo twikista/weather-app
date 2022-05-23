@@ -3,18 +3,12 @@ import * as helper from "./helper";
 function onPageLoad() {
   const header = helper.createElement(
     "h2",
-    ["Get Accurate Weather Detail by the Second"],
+    ["Get Accurate Weather Details by the Second"],
     {
       class:
-        "text-3xl sm:text-5xl uppercase font-barlow font-bold text-purple-400 mt-[-160px] text-center tracking-widest ",
+        "text-3xl sm:text-5xl uppercase font-barlow font-bold text-purple-400 mt-[-140px] text-center tracking-widest ",
     }
   );
-  const text =
-    "weda weather app provides you with up to date accurate and reliable weather information from across the world. Avoid unfavorable weather suprises with weda app.";
-
-  const appIntroText = helper.createElement("p", [text], {
-    class: "leading-loose mb-12 text-indigo-200",
-  });
 
   const callToActionBtn = helper.createElement("button", ["get started"], {
     class:
@@ -23,7 +17,12 @@ function onPageLoad() {
   const contentDiv = helper.createElement("div", [header, callToActionBtn], {
     class: "flex flex-col justify-center items-center h-full font-sanspro ",
   });
-  return contentDiv;
+
+  const section = helper.createElement("section", [contentDiv], {
+    class:
+      "home-section flex justify-center items-start px-4 text-justify h-full",
+  });
+  return section;
 }
 
 export default onPageLoad;

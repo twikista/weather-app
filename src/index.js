@@ -17,7 +17,8 @@ app.classList.add(
   "grid",
   "grid-rows-[auto_1fr_auto]",
   "min-h-screen",
-  "w-full"
+  "w-full",
+  "font-sanspro"
 );
 
 document.body.classList.add(

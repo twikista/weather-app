@@ -35,7 +35,7 @@ const footerSection = () => {
     "p",
     [copyRightSymbol, " aaronanama"],
     {
-      class: " font-normal text-purple-300 text-sm",
+      class: " font-normal text-base",
     }
   );
 
@@ -49,12 +49,10 @@ const footerSection = () => {
   fragment.append(wrapper);
   //footer element
   const footer = helper.createElement("footer", [fragment], {
-    class: `${styles.flexRowCenter} min-h-[50px] bg-gray-800 border-gray-700 w-full p-2 text-indigo-300 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]`,
+    class: `${styles.flexRowCenter} min-h-[50px] bg-gray-800 border-gray-700 w-full p-2 text-slate-300 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]`,
   });
 
   return footer;
 };
 
 export default footerSection;
-
-//shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]",
