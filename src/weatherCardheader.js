@@ -25,10 +25,6 @@ const weatherCardHeader = (weather) => {
     class: "material-icons-outlined text-pink-500 align-middle ",
   });
 
-  /*const weatherIcon = helper.createElement("span", ["cloud"], {
-    class: "material-icons-outlined text-8xl",
-  });*/
-
   //weather icon
   const weatherIcon = helper.createElement("img", [], {
     src: weather.icon,
@@ -182,5 +178,3 @@ const weatherCardHeader = (weather) => {
 };
 
 export default weatherCardHeader;
-
-//box-shadow: rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px;

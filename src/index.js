@@ -1,13 +1,8 @@
 import "./style.css";
-import * as helper from "./helper";
-//import classes from "./classes";
-//import main from "./main-element";
 import events from "./events";
-//import toggleWeatherUnit from "./convert-weather-unit";
 import headerSection from "./header";
 import mainSection from "./main";
 import footerSection from "./footer";
-// import classes from "./classes";
 
 const fragment = new DocumentFragment();
 fragment.append(headerSection(), mainSection(), footerSection());
@@ -29,4 +24,3 @@ document.body.classList.add(
 );
 
 events();
-//toggleWeatherUnit();

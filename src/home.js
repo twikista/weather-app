@@ -6,7 +6,7 @@ function onPageLoad() {
     ["Get Accurate Weather Details by the Second"],
     {
       class:
-        "text-3xl sm:text-5xl uppercase font-barlow font-bold text-purple-400 mt-[-140px] text-center tracking-widest ",
+        "text-3xl sm:text-5xl uppercase font-barlow font-bold text-purple-400  text-center tracking-widest self-start ",
     }
   );
 
@@ -15,7 +15,8 @@ function onPageLoad() {
       "call-to-action  w-[120px] px-4 py-2 uppercase text-sm text-pink-400 border-pink-400 font-sanspro font-semibold rounded transition ease-in duration-200 hover:text-slate-400 hover:border-slate-400 border-2 mt-[60px] shadow-[rgba(60,64,67,0.3)_0px_1px_2px_0px,rgba(60,64,67,0.15)_0px_2px_6px_2px;]",
   });
   const contentDiv = helper.createElement("div", [header, callToActionBtn], {
-    class: "flex flex-col justify-center items-center h-full font-sanspro ",
+    class:
+      "flex flex-col justify-start items-center h-full font-sanspro mt-[60px]",
   });
 
   const section = helper.createElement("section", [contentDiv], {
@@ -26,5 +27,3 @@ function onPageLoad() {
 }
 
 export default onPageLoad;
-
-//box-shadow: rgba(60,64,67,0.3)_0px_1px_2px_0px,rgba(60,64,67,0.15)_0px_2px_6px_2px;

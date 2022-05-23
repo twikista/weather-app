@@ -30,8 +30,6 @@ function userTime(timeZoneOffset) {
   const locationTime = new Date(locationOffset);
   console.log(locationTime);
   return locationTime;
-
-  //define date, day, hour amd minute
 }
 
 function renderUserTime(timeZoneOffset) {

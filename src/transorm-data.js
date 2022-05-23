@@ -1,8 +1,5 @@
-//import { isToggled } from "./events";
-
 import weatherCard from "./weatherCard";
 
-//import displayWeather from "./display-weather";
 export let weatherData = null;
 
 const tranformData = (data) => {
@@ -24,13 +21,8 @@ const tranformData = (data) => {
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     },
   ];
-  // isToggled = weatherData;
-  // console.log(weatherData);
-  //persistData(weatherData);
   console.log(weatherData);
   weatherCard(weatherData);
-  //display();
-  //return weatherData;
 };
 
 export default tranformData;

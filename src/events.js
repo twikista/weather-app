@@ -2,11 +2,6 @@ import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
 import { weatherData } from "./transorm-data";
 import onPageLoad from "./home";
-//import { weatherData } from "./data";
-//import weatherCard from "./weatherCard";
-//import loading from "./loading";
-
-//let isLoading = true;
 
 //get location from user input on form
 function getLocation() {
@@ -18,16 +13,6 @@ function getLocation() {
     const location = input.value;
     getData(location);
     input.value = "";
-    /*if (isLoading) {
-      loading(isLoading);
-    }
-
-    setTimeout(() => {
-      console.log(isLoading);
-      weatherCard(weatherData);
-      isLoading = false;
-    }, 3000);
-    console.log(weatherData);*/
   });
 }
 
@@ -86,7 +71,6 @@ const backToHome = () => {
     mainElement.innerHTML = "";
     mainElement.append(onPageLoad());
     focusInput();
-    return mainElement;
   });
 };
 

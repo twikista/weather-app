@@ -17,11 +17,6 @@ export function displayOnError(err, isLoading) {
     class: "text-2xl sm:text-4xl font-medium",
   });
 
-  const fixSuggestionHeading = helper.createElement(
-    "h3",
-    ["try the following:"],
-    null
-  );
   const dashOne = helper.degreeCharacter("&hyphen;");
   dashOne.classList.add("pr-[1px]");
   const dashTwo = helper.degreeCharacter("&hyphen;");
@@ -47,7 +42,7 @@ export function displayOnError(err, isLoading) {
     [sadFaceSpan, errorMessage, fixSuggestion],
     {
       class:
-        "flex flex-col items-center justify-center font-sanspro text-slate-300 text-sm sm:text-base w-full mt-[-100px]",
+        "flex flex-col items-center justify-start font-sanspro text-slate-300 text-sm sm:text-base w-full h-full mt-[150px]",
     }
   );
   const main = document.querySelector("main");

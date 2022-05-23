@@ -1,5 +1,4 @@
 import * as helper from "./helper";
-import styles from "./classes";
 
 function loading(isLoading) {
   const loadingDiv = helper.createElement("div", ["Loading..."], {
