@@ -85,6 +85,7 @@ const backToHome = () => {
   appLogo.addEventListener("click", (e) => {
     mainElement.innerHTML = "";
     mainElement.append(onPageLoad());
+    focusInput();
     return mainElement;
   });
 };
