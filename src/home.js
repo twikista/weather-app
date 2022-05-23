@@ -12,7 +12,7 @@ function onPageLoad() {
 
   const callToActionBtn = helper.createElement("button", ["get started"], {
     class:
-      "call-to-action  w-[120px] px-4 py-2 uppercase text-sm text-pink-400 border-pink-400 font-sanspro font-semibold rounded transition ease-in duration-200 hover:text-pink-500 hover:border-pink-500 border-2 mt-[60px] shadow-[rgba(60,64,67,0.3)_0px_1px_2px_0px,rgba(60,64,67,0.15)_0px_2px_6px_2px;]",
+      "call-to-action  w-[120px] px-4 py-2 uppercase text-sm text-pink-400 border-pink-400 font-sanspro font-semibold rounded transition ease-in duration-200 hover:text-slate-400 hover:border-slate-400 border-2 mt-[60px] shadow-[rgba(60,64,67,0.3)_0px_1px_2px_0px,rgba(60,64,67,0.15)_0px_2px_6px_2px;]",
   });
   const contentDiv = helper.createElement("div", [header, callToActionBtn], {
     class: "flex flex-col justify-center items-center h-full font-sanspro ",
