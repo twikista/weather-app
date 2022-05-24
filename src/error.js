@@ -37,14 +37,21 @@ export function displayOnError(err, isLoading) {
     class: "border-[1px] border-slate-400 rounded-lg px-2 py-2 mt-5",
   });
 
-  const onErrorDiv = helper.createElement(
+  const errorWrapper = helper.createElement(
     "div",
     [sadFaceSpan, errorMessage, fixSuggestion],
     {
       class:
-        "flex flex-col items-center justify-start font-sanspro text-slate-300 text-sm sm:text-base w-full h-full mt-[150px]",
+        "error-wrapper flex flex-col justify-center items-center h-4/5 mt-[0] sm:justify-center sm:h-[90%]",
     }
   );
+
+  const onErrorDiv = helper.createElement("div", [errorWrapper], {
+    class:
+      "flex flex-col items-center justify-start font-sanspro text-slate-300 text-sm sm:text-base w-full h-full",
+  });
+  // "home-section flex justify-center items-start px-4 text-justify h-full",
+
   const main = document.querySelector("main");
   main.innerHTML = "";
   main.append(onErrorDiv);

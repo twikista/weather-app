@@ -12,14 +12,17 @@ const footerSection = () => {
   const githubLink = helper.createElement("a", [github], {
     href: "https://github.com/twikista",
     class: `${styles.footerIcons}`,
+    target: "_blank",
   });
   const twitterLink = helper.createElement("a", [twitter], {
     href: "https://twitter.com/aaronanama",
     class: `${styles.footerIcons}`,
+    target: "_blank",
   });
   const linkedinLink = helper.createElement("a", [linkedin], {
     href: "https://www.linkedin.com/in/aaronanama",
-    class: `${styles.footerIcons}`,
+    class: `${styles.footerIcons} `,
+    target: "_blank",
   });
 
   //footer-social icons wrapper
@@ -49,7 +52,7 @@ const footerSection = () => {
   fragment.append(wrapper);
   //footer element
   const footer = helper.createElement("footer", [fragment], {
-    class: `${styles.flexRowCenter} min-h-[50px] bg-gray-800 border-gray-700 w-full p-2 text-slate-300 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]`,
+    class: `${styles.flexRowCenter} min-h-[50px] bg-gray-800 border-gray-700 w-full p-2 text-slate-300 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px] mt-2`,
   });
 
   return footer;
