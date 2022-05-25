@@ -43,7 +43,11 @@ const weatherCardContent = (weather) => {
   const pressureIcon = helper.createElement("span", ["science"], {
     class: `material-icons-outlined ${styles.icons}`,
   });
-  const pressure = helper.createElement("p", [weather.pressure], null);
+  const pressure = helper.createElement(
+    "p",
+    [`pressure: ${weather.pressure}`],
+    null
+  );
   const pressureDiv = helper.createElement("div", [pressureIcon, pressure], {
     class: styles.cardStyles,
   });

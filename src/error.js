@@ -42,7 +42,7 @@ export function displayOnError(err, isLoading) {
     [sadFaceSpan, errorMessage, fixSuggestion],
     {
       class:
-        "error-wrapper flex flex-col justify-center items-center h-4/5 mt-[0] sm:justify-center sm:h-[90%]",
+        "error-wrapper flex flex-col justify-top items-center h-full pt-[120px] sm:justify-center sm:pt-0",
     }
   );
 

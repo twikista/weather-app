@@ -16,7 +16,7 @@ function onPageLoad() {
   });
   const contentDiv = helper.createElement("div", [header, callToActionBtn], {
     class:
-      "flex flex-col justify-center items-center h-4/5 font-sanspro mt-[0] sm:justify-center mt-0",
+      "flex flex-col justify-top items-center h-full font-sanspro pt-[100px] sm:justify-center sm:pt-0",
   });
 
   const section = helper.createElement("section", [contentDiv], {
