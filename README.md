@@ -8,14 +8,15 @@ https://twikista.github.io/weather-app/
 
 ## Table of contents
 
-_[Features](#features) \*[Screenshot](#screenshots)
-_[Motivation](#motivation)
-_[Tecnology used](#technology-used)
-_[Tools](#tools)
-_[Key concepts appliked](#key-concepts-applied)
-_[Setup](#setup)
-_[Usage](#usage)
-_[Acknowledgment](#acknowledgement)
+- [Features](#features)
+- [Motivation](#motivation)
+- [Scrrenshots](#screenshots)
+- [Tecnology used](#technology-used)
+- [Tools](#tools)
+- [Key concepts appliked](#key-concepts-applied)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Acknowledgment](#acknowledgement)
 
 ## Features
 
@@ -68,11 +69,11 @@ $ git clone https://github.com/twikista/weather-app.git
 $ cd weather-app && npm install
 ```
 
-3. Get api key from [openweather.org](https://openweathermap.org) and save to API_KEY in `bash src/fetch.js`
+3. Get api key from [openweather.org](https://openweathermap.org) and save to API_KEY in ` src/fetch.js`
 
 ## Usage
 
-To start the application run `bash npm start` to start the development server at http://localhost:8080/
+To start the application, run ` npm start` to start the development server at http://localhost:8080/
 
 ## Acknowledgement
 
