@@ -18,7 +18,7 @@ const headerSection = () => {
 
   //create search box
   const searchInput = helper.createElement("input", [], {
-    type: "text",
+    type: "search",
     id: "search-input",
     placeholder: "Enter weather location ",
     class:

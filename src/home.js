@@ -1,4 +1,5 @@
 import * as helper from "./helper";
+import defaultLoactionForm from "./choose-location";
 
 function onPageLoad() {
   const header = helper.createElement(
@@ -23,6 +24,10 @@ function onPageLoad() {
     class:
       "home-section flex justify-center items-start px-4 text-justify h-full",
   });
+
+  setTimeout(() => {
+    section.append(defaultLoactionForm());
+  }, 2000);
   return section;
 }
 
