@@ -2,18 +2,46 @@ import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
 import { weatherData } from "./transorm-data";
 import onPageLoad from "./home";
+import store from "./location-store";
 
 //get location from user input on form
 function getLocation() {
-  const form = document.querySelector("form");
-  const input = form.elements["search-input"];
-  const main = document.querySelector("main");
+  const form = document.querySelector(".location");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = input.value;
     getData(location);
     input.value = "";
   });
+}
+
+function defaultLocation() {
+  const form = document.querySelector(".default-location-form");
+  if (form) {
+    const input = form.elements["default-location-input"];
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const location = input.value;
+      store.setLocation(location);
+      console.log(location);
+      getData(location);
+      input.value = "";
+    });
+  }
+}
+
+function cancelDefaultLocation() {
+  //const form = document.querySelector(".default-location-form");
+  const overlay = document.querySelector(".overlay");
+  if (overlay) {
+    overlay.addEventListener("click", (e) => {
+      const target = e.target;
+      if (target.classList.contains("close-modal")) {
+        overlay.remove();
+      }
+      store.setLocation("canceled");
+    });
+  }
 }
 
 //toggle check box to switch between temperature states
@@ -77,6 +105,8 @@ const backToHome = () => {
 //initialize events
 const events = () => {
   getLocation();
+  cancelDefaultLocation();
+  defaultLocation();
   toggler();
   focusInput();
   backToHome();

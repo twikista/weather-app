@@ -1,6 +1,6 @@
 module.exports = {
   purge: ["./*.html", "./src/**/*.js"],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: "media", // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
@@ -8,6 +8,15 @@ module.exports = {
         barlow: ["Barlow", "sans-serif"],
         fira: ["Fira sans", "sans-serfif"],
         sanspro: ["source sans pro", "sans-serif"],
+      },
+      animation: {
+        reveal: "reveal 1s linear forwards ",
+      },
+      keyframes: {
+        reveal: {
+          from: { top: "-900px" },
+          to: { top: "0px" },
+        },
       },
     },
   },

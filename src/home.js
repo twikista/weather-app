@@ -1,5 +1,7 @@
 import * as helper from "./helper";
 import defaultLoactionForm from "./choose-location";
+import store from "./location-store";
+import setTimeOut from "./timeout";
 
 function onPageLoad() {
   const header = helper.createElement(
@@ -25,9 +27,13 @@ function onPageLoad() {
       "home-section flex justify-center items-start px-4 text-justify h-full",
   });
 
-  setTimeout(() => {
+  console.log(store.location());
+
+  if (store.location() === null) {
     section.append(defaultLoactionForm());
-  }, 2000);
+  }
+
+  console.log(!store.location());
   return section;
 }
 
