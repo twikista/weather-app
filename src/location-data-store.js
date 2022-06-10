@@ -1,25 +1,38 @@
-// const store = (() => {
-//     const locationKey = "defaultLocation";
-//     let defaultLocation = getLocationFromStorage();
+const defaultDataStore = (() => {
+  const locationKey = "defaultLocationWeatherData";
+  let defaultLocationWeatherData = getDataFromStorage();
+  let isDefaultRequest = null;
 
-//     function getLocationFromStorage() {
-//       const retrievedLocation = localStorage.getItem(locationKey) || null;
-//       return retrievedLocation;
-//     }
+  function getDataFromStorage() {
+    const retrievedWeatherData =
+      JSON.parse(localStorage.getItem(locationKey)) || null;
+    console.log(retrievedWeatherData);
+    return retrievedWeatherData;
+  }
 
-//     function setLocationToStorage() {
-//       localStorage.setItem(locationKey, defaultLocation);
-//     }
+  function setDataToStorage() {
+    localStorage.setItem(
+      locationKey,
+      JSON.stringify(defaultLocationWeatherData)
+    );
+  }
 
-//     const setLocation = (location) => {
-//       defaultLocation = location;
-//       setLocationToStorage();
-//       console.log(defaultLocation);
-//     };
+  const setData = (data) => {
+    defaultLocationWeatherData = data;
+    setDataToStorage();
+    console.log(defaultLocationWeatherData);
+  };
 
-//     const location = () => {
-//       return defaultLocation;
-//     };
+  const defaultRequestState = () => {
+    isDefaultRequest = defaultLocationWeatherData === null ? true : false;
+    return isDefaultRequest;
+  };
 
-//     return { setLocation, location };
-//   })();
+  const defaultLocationData = () => {
+    return defaultLocationWeatherData;
+  };
+
+  return { setData, defaultLocationData, defaultRequestState };
+})();
+
+export default defaultDataStore;

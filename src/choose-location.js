@@ -29,7 +29,7 @@ function defaultLoactionForm() {
       "submit-btn transition ease-in py-[3px] text-gray-400 rounded-md border-[2px] border-gray-500  outline-none  text-sm sm:text-base px-2 min-w-[60px] sm:min-w-[80px] font-semibold hover:border-purple-500 hover:text-purple-400 duration-200",
   });
 
-  const cancelBtn = helper.createElement("button", ["cancel"], {
+  const cancelBtn = helper.createElement("button", ["close"], {
     id: "cancel-btn",
     class:
       "cancel-btn close-modal transition ease-in py-[3px] text-gray-400 rounded-md border-[2px] border-gray-500  outline-none  text-sm sm:text-base px-2 min-w-[60px] sm:min-w-[80px] font-semibold hover:border-purple-500 hover:text-purple-400 duration-200",

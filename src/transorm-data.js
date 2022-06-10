@@ -1,6 +1,11 @@
-import weatherCard from "./weatherCard";
+// import weatherCard from "./weatherCard";
+import defaultDataStore from "./location-data-store";
+import store from "./location-store";
+import renderCurrent from "./render-current";
 
 export let weatherData = null;
+
+//import { isDefault } from "./events";
 
 const tranformData = (data) => {
   weatherData = [
@@ -22,7 +27,14 @@ const tranformData = (data) => {
     },
   ];
   console.log(weatherData);
-  weatherCard(weatherData);
+  console.log(defaultDataStore.defaultRequestState());
+  if (defaultDataStore.defaultRequestState()) {
+    defaultDataStore.setData(weatherData);
+  }
+  store.setLocation(weatherData[0].city);
+  //isDefault = false;
+  console.log(defaultDataStore.defaultRequestState());
+  renderCurrent(weatherData);
 };
 
 export default tranformData;

@@ -1,12 +1,22 @@
 import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
-import { weatherData } from "./transorm-data";
-import onPageLoad from "./home";
+import tranformData, { weatherData } from "./transorm-data";
+import renderOnPageLoad from "./home";
 import store from "./location-store";
+
+//export let isDefault = false;
+
+//handle render on page load
+function onPageLoadHandler() {
+  window.addEventListener("load", () => {
+    renderOnPageLoad();
+  });
+}
 
 //get location from user input on form
 function getLocation() {
   const form = document.querySelector(".location");
+  const input = form.elements["search-input"];
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = input.value;
@@ -22,9 +32,10 @@ function defaultLocation() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const location = input.value;
-      store.setLocation(location);
+      // store.setLocation(location);
       console.log(location);
       getData(location);
+      //console.log(isDefault);
       input.value = "";
     });
   }
@@ -39,7 +50,7 @@ function cancelDefaultLocation() {
       if (target.classList.contains("close-modal")) {
         overlay.remove();
       }
-      store.setLocation("canceled");
+      // store.setLocation("canceled");
     });
   }
 }
@@ -83,11 +94,13 @@ function togglerSwitch(isToggled) {
 }
 
 const focusInput = () => {
-  const form = document.querySelector("form input");
+  const form = document.querySelector(".location input");
   const callToActionBtn = document.querySelector(".call-to-action");
-  callToActionBtn.addEventListener("click", (e) => {
-    form.focus();
-  });
+  if (callToActionBtn) {
+    callToActionBtn.addEventListener("click", (e) => {
+      form.focus();
+    });
+  }
 };
 
 //home
@@ -97,13 +110,15 @@ const backToHome = () => {
   const mainElement = document.querySelector("main");
   appLogo.addEventListener("click", (e) => {
     mainElement.innerHTML = "";
-    mainElement.append(onPageLoad());
+    mainElement.append(renderOnPageLoad());
     focusInput();
   });
 };
 
 //initialize events
 const events = () => {
+  //onPageLoadHandler();
+  //renderOnPageLoad();
   getLocation();
   cancelDefaultLocation();
   defaultLocation();
