@@ -3,6 +3,8 @@ import getData from "./fetch-data";
 import tranformData, { weatherData } from "./transorm-data";
 import renderOnPageLoad from "./home";
 import store from "./location-store";
+import togglerSwitch from "./render-temp-unit-change";
+import defaultDataStore from "./location-data-store";
 
 //export let isDefault = false;
 
@@ -61,37 +63,14 @@ const toggler = () => {
   mainElement.addEventListener("change", (e) => {
     const target = e.target;
     const isToggled = target.checked;
-    setTemperatureUnit(isToggled, weatherData);
+    const data =
+      weatherData === null
+        ? defaultDataStore.defaultLocationData()
+        : weatherData;
+    setTemperatureUnit(isToggled, data);
     togglerSwitch(isToggled);
   });
 };
-
-function togglerSwitch(isToggled) {
-  const toggleOn = document.querySelector(".toggle-on");
-  const toggleOff = document.querySelector(".toggle-off");
-  const celsius = document.querySelector(".celsius");
-  const fahrenheit = document.querySelector(".fahrenheit");
-  if (isToggled) {
-    //switch toggler
-    toggleOn.classList.remove("hidden");
-    toggleOff.classList.add("hidden");
-    //switch between active weather unit
-    celsius.classList.remove("text-purple-400");
-    celsius.classList.add("text-gray-500");
-    fahrenheit.classList.remove("text-gray-500");
-    fahrenheit.classList.add("text-purple-400");
-  }
-
-  if (!isToggled) {
-    toggleOn.classList.add("hidden");
-    toggleOff.classList.remove("hidden");
-
-    celsius.classList.add("text-purple-400");
-    celsius.classList.remove("text-gray-500");
-    fahrenheit.classList.add("text-gray-500");
-    fahrenheit.classList.remove("text-purple-400");
-  }
-}
 
 const focusInput = () => {
   const form = document.querySelector(".location input");

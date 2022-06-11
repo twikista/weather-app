@@ -19,7 +19,7 @@ const weatherCardContent = (weather) => {
   });
   const humidity = helper.createElement(
     "p",
-    [`Humidity: ${weather.humidity}`],
+    [`Humidity: ${weather.humidity}%`],
     null
   );
   const humidityDiv = helper.createElement("div", [humidityIcon, humidity], {

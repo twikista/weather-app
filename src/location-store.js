@@ -13,6 +13,9 @@ const store = (() => {
   }
 
   const setLocation = (location) => {
+    if (defaultLocation !== null) {
+      return;
+    }
     defaultLocation = location;
     setLocationToStorage();
     console.log(defaultLocation);
