@@ -1,11 +1,15 @@
-const renderState = () => {
-  let isRenderingDefault = null;
+const renderState = (() => {
+  let isRenderingDefault = false;
   const setIsRenderingDefault = (newState) => {
     isRenderingDefault = newState;
     return isRenderingDefault;
   };
 
-  return { setIsRenderingDefault };
-};
+  const currentState = () => {
+    return isRenderingDefault;
+  };
+
+  return { setIsRenderingDefault, currentState };
+})();
 
 export default renderState;
