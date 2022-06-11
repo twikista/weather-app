@@ -2,6 +2,7 @@
 import defaultDataStore from "./location-data-store";
 import store from "./location-store";
 import renderCurrent from "./render-current";
+import { userTime } from "./timeAndDate";
 
 export let weatherData = null;
 
@@ -22,7 +23,7 @@ const tranformData = (data) => {
       country: data.sys.country,
       city: data.name,
       timeZone: data.timezone,
-      time: data.dt,
+      time: userTime(data.timezone),
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     },
   ];

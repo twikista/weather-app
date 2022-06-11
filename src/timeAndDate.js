@@ -21,7 +21,7 @@ function dayOfWeek(date) {
 }
 
 //convert time to user time with UTC and TimeZone
-function userTime(timeZoneOffset) {
+export function userTime(timeZoneOffset) {
   const date = new Date();
   const localTime = date.getTime();
   const localTimeOffset = date.getTimezoneOffset() * 60000;

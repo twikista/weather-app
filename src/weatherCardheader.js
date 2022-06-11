@@ -89,6 +89,32 @@ const weatherCardHeader = (weather) => {
       "temp-wrapper w-4/5 flex-auto flex flex-col items-center justify-center",
   });
 
+  //temperature and minmax wrapper
+  const weatherRight = helper.createElement("div", [tempWrapper], {
+    class: "weather-right flex flex-col justify-center items-center",
+  });
+
+  //weather
+  const divMid = helper.createElement("span", [], {
+    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
+  });
+
+  //header-bottom
+  const refreshIcon = helper.createElement("span", ["refresh"], {
+    class:
+      " material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
+  });
+
+  const timeUpdated = helper.createElement("span", ["updated:2hrs ago"], {
+    class: "text-slate-400",
+  });
+
+  const timeOfWeatherUpdate = helper.createElement(
+    "div",
+    [timeUpdated, refreshIcon],
+    { class: "flex" }
+  );
+
   //header right
   const checkbox = helper.createElement("input", null, {
     type: "checkbox",
@@ -144,19 +170,11 @@ const weatherCardHeader = (weather) => {
     class: "togglers-wrapper flex items-center self-end mt-auto",
   });
 
-  //temperature and minmax wrapper
-  const weatherRight = helper.createElement(
+  const headerBottom = helper.createElement(
     "div",
-    [tempWrapper, togglersWrapper],
-    {
-      class: "weather-right flex flex-col justify-center items-center",
-    }
+    [timeOfWeatherUpdate, togglersWrapper],
+    { class: "text-sm flex justify-between items-center" }
   );
-
-  //weather
-  const divMid = helper.createElement("span", [], {
-    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
-  });
 
   const weatherWrapper = helper.createElement(
     "div",
@@ -168,11 +186,11 @@ const weatherCardHeader = (weather) => {
   );
 
   const fragment = new DocumentFragment();
-  fragment.append(headerTop, weatherWrapper);
+  fragment.append(headerTop, weatherWrapper, headerBottom);
 
   const header = helper.createElement("header", [fragment], {
     class:
-      "card-header grid grid-rows-[50px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
+      "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
   });
   return header;
 };
