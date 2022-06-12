@@ -5,6 +5,7 @@ import renderOnPageLoad from "./home";
 import store from "./location-store";
 import togglerSwitch from "./render-temp-unit-change";
 import defaultDataStore from "./location-data-store";
+import renderState from "./renderState";
 
 //export let isDefault = false;
 
@@ -16,18 +17,19 @@ function onPageLoadHandler() {
 }
 
 //get location from user input on form
-function getLocation() {
+function setCurrentLocation() {
   const form = document.querySelector(".location");
   const input = form.elements["search-input"];
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = input.value;
+    renderState.setIsRenderingDefault(false);
     getData(location);
     input.value = "";
   });
 }
 
-function defaultLocation() {
+function setDefaultLocation() {
   const form = document.querySelector(".default-location-form");
   if (form) {
     const input = form.elements["default-location-input"];
@@ -43,7 +45,7 @@ function defaultLocation() {
   }
 }
 
-function cancelDefaultLocation() {
+function closeDefaultLocationModal() {
   //const form = document.querySelector(".default-location-form");
   const overlay = document.querySelector(".overlay");
   if (overlay) {
@@ -56,6 +58,22 @@ function cancelDefaultLocation() {
     });
   }
 }
+
+//update default location weather data
+const updateDefaultLocationWeatherData = () => {
+  const main = document.querySelector("main");
+  main.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target.classList.contains("refresh-icon")) {
+      return;
+    }
+    defaultDataStore.clearDefaultData();
+    const defaultLocation = store.location();
+    renderState.setIsRenderingDefault(true);
+    getData(defaultLocation);
+    console.log("i got clicked!!");
+  });
+};
 
 //toggle check box to switch between temperature states
 const toggler = () => {
@@ -98,9 +116,10 @@ const backToHome = () => {
 const events = () => {
   //onPageLoadHandler();
   //renderOnPageLoad();
-  getLocation();
-  cancelDefaultLocation();
-  defaultLocation();
+  setCurrentLocation();
+  setDefaultLocation();
+  closeDefaultLocationModal();
+  updateDefaultLocationWeatherData();
   toggler();
   focusInput();
   backToHome();

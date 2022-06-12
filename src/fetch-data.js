@@ -14,7 +14,7 @@ const getData = async (city) => {
     const data = await response.json();
     tranformData(data);
     console.log(data);
-    return data;
+    // return data;
   } catch (err) {
     displayOnError(err, isLoading);
   }

@@ -1,6 +1,7 @@
 import classes from "./classes";
 import * as helper from "./helper";
 import renderUserTime from "./timeAndDate";
+import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
 const weatherCardDefault = (weather) => {
   //header left
@@ -102,12 +103,18 @@ const weatherCardDefault = (weather) => {
   //header-bottom
   const refreshIcon = helper.createElement("span", ["refresh"], {
     class:
-      " material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
+      " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
   });
 
-  const timeUpdated = helper.createElement("span", ["updated:2hrs ago"], {
-    class: "text-slate-400",
-  });
+  const timeSnap = new Date(weather.time).getTime();
+
+  const timeUpdated = helper.createElement(
+    "span",
+    [`${formatDistanceToNowStrict(timeSnap)} ago`],
+    {
+      class: "text-slate-400",
+    }
+  );
 
   const timeOfWeatherUpdate = helper.createElement(
     "div",

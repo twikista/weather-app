@@ -23,6 +23,11 @@ const defaultDataStore = (() => {
     console.log(defaultLocationWeatherData);
   };
 
+  const clearDefaultData = () => {
+    defaultLocationWeatherData = null;
+    setDataToStorage();
+  };
+
   const defaultRequestState = () => {
     isDefaultRequest = defaultLocationWeatherData === null ? true : false;
     return isDefaultRequest;
@@ -32,7 +37,12 @@ const defaultDataStore = (() => {
     return defaultLocationWeatherData;
   };
 
-  return { setData, defaultLocationData, defaultRequestState };
+  return {
+    setData,
+    defaultLocationData,
+    clearDefaultData,
+    defaultRequestState,
+  };
 })();
 
 export default defaultDataStore;

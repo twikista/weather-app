@@ -1,6 +1,7 @@
 import initialPageRender from "./initial-render";
 import defaulPageRender from "./default-render";
 import store from "./location-store";
+import defaultDataStore from "./location-data-store";
 
 function renderOnPageLoad() {
   //const main = document.querySelector("main");
@@ -10,7 +11,7 @@ function renderOnPageLoad() {
 
   store.location() === null
     ? fragment.append(initialPageRender())
-    : fragment.append(defaulPageRender());
+    : fragment.append(defaulPageRender(defaultDataStore.defaultLocationData()));
   return fragment;
 }
 

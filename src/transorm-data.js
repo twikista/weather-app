@@ -2,7 +2,10 @@
 import defaultDataStore from "./location-data-store";
 import store from "./location-store";
 import renderCurrent from "./render-current";
+import defaulPageRender from "./default-render";
+import renderState from "./renderState";
 import { userTime } from "./timeAndDate";
+import h from "./h";
 
 export let weatherData = null;
 
@@ -24,6 +27,7 @@ const tranformData = (data) => {
       city: data.name,
       timeZone: data.timezone,
       time: userTime(data.timezone),
+      //time: data.dt,
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     },
   ];
@@ -31,8 +35,12 @@ const tranformData = (data) => {
   console.log(defaultDataStore.defaultRequestState());
   if (defaultDataStore.defaultRequestState()) {
     defaultDataStore.setData(weatherData);
+    store.setLocation(weatherData[0].city);
+    // defaulPageRender();
+    renderCurrent(defaultDataStore.defaultLocationData());
+    return;
   }
-  store.setLocation(weatherData[0].city);
+
   //isDefault = false;
   console.log(defaultDataStore.defaultRequestState());
   renderCurrent(weatherData);

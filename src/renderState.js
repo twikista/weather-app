@@ -1,7 +1,9 @@
 const renderState = (() => {
-  let isRenderingDefault = false;
+  let isRenderingDefault = null;
+
   const setIsRenderingDefault = (newState) => {
     isRenderingDefault = newState;
+    console.log(isRenderingDefault);
     return isRenderingDefault;
   };
 

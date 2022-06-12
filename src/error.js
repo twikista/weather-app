@@ -57,5 +57,6 @@ export function displayOnError(err, isLoading) {
   main.append(onErrorDiv);
   isLoading = false;
   console.log(isLoading);
+  console.log(err);
   return main;
 }
