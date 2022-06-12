@@ -7,15 +7,6 @@ import togglerSwitch from "./render-temp-unit-change";
 import defaultDataStore from "./location-data-store";
 import renderState from "./renderState";
 
-//export let isDefault = false;
-
-//handle render on page load
-function onPageLoadHandler() {
-  window.addEventListener("load", () => {
-    renderOnPageLoad();
-  });
-}
-
 //get location from user input on form
 function setCurrentLocation() {
   const form = document.querySelector(".location");

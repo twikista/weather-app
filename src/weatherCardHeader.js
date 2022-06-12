@@ -5,12 +5,6 @@ import renderState from "./renderState";
 import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
 const weatherCardHeader = (weather) => {
-  //constionally render elements
-  /*const conditionalRenderElement = (truthyElement, falsyElement) =>{
-  const fragment = new DocumentFragment()
-  renderState.currentState() ? fragment.append(truthyElement :falsyElement;
-}*/
-
   //header left
   const locationIcon = helper.addIcon("location_on", [classes.icons]);
   locationIcon.classList.add("text-xs", "text-indigo-400");
@@ -115,17 +109,17 @@ const weatherCardHeader = (weather) => {
 
   const timeSnap = new Date(weather.time).getTime();
 
-  const timeUpdated = helper.createElement(
+  const lastWeatherUpdateTime = helper.createElement(
     "span",
-    [`${formatDistanceToNowStrict(timeSnap)} ago`],
+    [`updated: ${formatDistanceToNowStrict(timeSnap)} ago`],
     {
-      class: "text-slate-400",
+      class: "update-time text-slate-400",
     }
   );
 
   const timeOfWeatherUpdate = helper.createElement(
     "div",
-    [timeUpdated, refreshIcon],
+    [lastWeatherUpdateTime, refreshIcon],
     { class: "flex" }
   );
 

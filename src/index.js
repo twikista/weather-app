@@ -1,5 +1,6 @@
 import "./style.css";
 import events from "./events";
+import initialize from "./others";
 import headerSection from "./header";
 import mainSection from "./main";
 import footerSection from "./footer";
@@ -24,3 +25,4 @@ document.body.classList.add(
 );
 
 events();
+initialize();
