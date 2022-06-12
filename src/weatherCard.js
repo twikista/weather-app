@@ -1,6 +1,6 @@
 import * as helper from "./helper";
 import weatherCardContent from "./weatherCardContent";
-import weatherCardHeader from "./weatherCardheader";
+import weatherCardHeader from "./weatherCardHeader";
 import loading from "./loading";
 const weatherCard = (weather) => {
   // const main = document.querySelector("main");

@@ -1,8 +1,16 @@
 import classes from "./classes";
 import * as helper from "./helper";
 import renderUserTime from "./timeAndDate";
+import renderState from "./renderState";
+import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
-const weatherCardCurrent = (weather) => {
+const weatherCardHeader = (weather) => {
+  //constionally render elements
+  /*const conditionalRenderElement = (truthyElement, falsyElement) =>{
+  const fragment = new DocumentFragment()
+  renderState.currentState() ? fragment.append(truthyElement :falsyElement;
+}*/
+
   //header left
   const locationIcon = helper.addIcon("location_on", [classes.icons]);
   locationIcon.classList.add("text-xs", "text-indigo-400");
@@ -89,6 +97,38 @@ const weatherCardCurrent = (weather) => {
       "temp-wrapper w-4/5 flex-auto flex flex-col items-center justify-center",
   });
 
+  //temperature and minmax wrapper
+  const weatherRight = helper.createElement("div", [tempWrapper], {
+    class: "weather-right flex flex-col justify-center items-center",
+  });
+
+  //weather
+  const divMid = helper.createElement("span", [], {
+    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
+  });
+
+  //header-bottom
+  const refreshIcon = helper.createElement("span", ["refresh"], {
+    class:
+      " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
+  });
+
+  const timeSnap = new Date(weather.time).getTime();
+
+  const timeUpdated = helper.createElement(
+    "span",
+    [`${formatDistanceToNowStrict(timeSnap)} ago`],
+    {
+      class: "text-slate-400",
+    }
+  );
+
+  const timeOfWeatherUpdate = helper.createElement(
+    "div",
+    [timeUpdated, refreshIcon],
+    { class: "flex" }
+  );
+
   //header right
   const checkbox = helper.createElement("input", null, {
     type: "checkbox",
@@ -143,20 +183,25 @@ const weatherCardCurrent = (weather) => {
   const togglersWrapper = helper.createElement("div", [togglers], {
     class: "togglers-wrapper flex items-center self-end mt-auto",
   });
+  /*
+set up conditional render for headerBottom element
+*/
+  const headerBottomFragment = new DocumentFragment();
+  renderState.currentState()
+    ? headerBottomFragment.append(timeOfWeatherUpdate, togglersWrapper)
+    : headerBottomFragment.append(togglersWrapper);
 
-  //temperature and minmax wrapper
-  const weatherRight = helper.createElement(
-    "div",
-    [tempWrapper, togglersWrapper],
-    {
-      class: "weather-right flex flex-col justify-center items-center",
-    }
-  );
+  /*
+  set up class to condtionally apply to headerBottom element
+  */
+  const classOne = "text-sm flex justify-between items-center";
+  const classTwo = "text-sm flex justify-end items-center pr-1 pb-1";
+  const usedClass = renderState.currentState() ? classOne : classTwo;
 
-  //weather
-  const divMid = helper.createElement("span", [], {
-    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
+  const headerBottom = helper.createElement("div", [headerBottomFragment], {
+    class: `${usedClass}`,
   });
+  console.log(usedClass);
 
   const weatherWrapper = helper.createElement(
     "div",
@@ -168,13 +213,23 @@ const weatherCardCurrent = (weather) => {
   );
 
   const fragment = new DocumentFragment();
-  fragment.append(headerTop, weatherWrapper);
+  // fragment.append(headerTop, weatherWrapper, headerBottom);
+  renderState.currentState()
+    ? fragment.append(headerTop, weatherWrapper, headerBottom)
+    : fragment.append(headerTop, weatherWrapper, headerBottom);
+
+  const defaultClass =
+    "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
+
+  const currentClass =
+    "card-header grid grid-rows-[50px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
+
+  const classApplied = renderState.currentState() ? defaultClass : currentClass;
 
   const header = helper.createElement("header", [fragment], {
-    class:
-      "card-header grid grid-rows-[50px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro",
+    class: `${classApplied}`,
   });
   return header;
 };
 
-export default weatherCardCurrent;
+export default weatherCardHeader;
