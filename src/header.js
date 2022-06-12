@@ -4,12 +4,12 @@ const headerSection = () => {
   const fragment = new DocumentFragment();
 
   /******nav left section*****/
-  const logoDeg = helper.degreeCharacter("&deg;");
-  logoDeg.classList.add("text-pink-400", "text-xl");
-  const logof = helper.createElement("span", ["wb_sunny"], {
+  //const logoDeg = helper.degreeCharacter("&deg;");
+  //logoDeg.classList.add("text-pink-400", "text-xl");
+  const sunnyIcon = helper.createElement("span", ["wb_sunny"], {
     class: "material-icons-outlined text-pink-400 text-lg",
   });
-  const logo = helper.createElement("h2", ["weda", logof], {
+  const logo = helper.createElement("h2", ["weda", sunnyIcon], {
     class:
       "app-logo font-barlow font-semibold text-gray-400 text-2xl shadow-sky-500 cursor-pointer flex",
   });

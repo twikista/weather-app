@@ -1,7 +1,6 @@
 import * as helper from "./helper";
 import defaultLoactionForm from "./choose-location";
 import store from "./location-store";
-import setTimeOut from "./timeout";
 
 function initialPageRender() {
   const header = helper.createElement(
