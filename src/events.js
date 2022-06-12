@@ -58,7 +58,7 @@ const updateDefaultLocationWeatherData = () => {
     if (!target.classList.contains("refresh-icon")) {
       return;
     }
-    defaultDataStore.clearDefaultData();
+    // defaultDataStore.clearDefaultData();
     const defaultLocation = store.location();
     renderState.setIsRenderingDefault(true);
     getData(defaultLocation);

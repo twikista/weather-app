@@ -2,10 +2,8 @@
 import defaultDataStore from "./location-data-store";
 import store from "./location-store";
 import renderCurrent from "./render-current";
-import defaulPageRender from "./default-render";
 import renderState from "./renderState";
 import { userTime } from "./timeAndDate";
-import h from "./h";
 
 export let weatherData = null;
 
@@ -17,8 +15,8 @@ const tranformData = (data) => {
       weather: data.weather[0].main,
       weatherdesc: data.weather[0].description,
       temp: data.main.temp,
-      maxTemp: Math.ceil(data.main.temp_max.toFixed(1)),
-      minTemp: Math.floor(data.main.temp_min.toFixed(1)),
+      maxTemp: Math.round(data.main.temp_max.toFixed(1)),
+      minTemp: Math.round(data.main.temp_min.toFixed(1)),
       feelsLike: data.main.feels_like,
       humidity: data.main.humidity,
       pressure: data.main.pressure,
@@ -32,16 +30,15 @@ const tranformData = (data) => {
     },
   ];
   console.log(weatherData);
-  console.log(defaultDataStore.defaultRequestState());
-  if (defaultDataStore.defaultRequestState()) {
+  console.log(renderState.currentState());
+  if (renderState.currentState()) {
     defaultDataStore.setData(weatherData);
     store.setLocation(weatherData[0].city);
-    // defaulPageRender();
+    console.log("i ran");
     renderCurrent(defaultDataStore.defaultLocationData());
     return;
   }
 
-  //isDefault = false;
   console.log(defaultDataStore.defaultRequestState());
   renderCurrent(weatherData);
 };

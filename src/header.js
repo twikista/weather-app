@@ -6,9 +6,12 @@ const headerSection = () => {
   /******nav left section*****/
   const logoDeg = helper.degreeCharacter("&deg;");
   logoDeg.classList.add("text-pink-400", "text-xl");
-  const logo = helper.createElement("h2", ["weda", logoDeg], {
+  const logof = helper.createElement("span", ["wb_sunny"], {
+    class: "material-icons-outlined text-pink-400 text-lg",
+  });
+  const logo = helper.createElement("h2", ["weda", logof], {
     class:
-      "app-logo font-barlow font-semibold text-gray-400 text-2xl shadow-sky-500 cursor-pointer",
+      "app-logo font-barlow font-semibold text-gray-400 text-2xl shadow-sky-500 cursor-pointer flex",
   });
   const navLeft = helper.createElement("div", [logo], {
     class: "mb-2 py-[1px] logo-container sm:flex-1 sm:ml-8",
