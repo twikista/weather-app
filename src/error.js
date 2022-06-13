@@ -50,7 +50,6 @@ export function displayOnError(err, isLoading) {
     class:
       "flex flex-col items-center justify-start font-sanspro text-slate-300 text-sm sm:text-base w-full h-full",
   });
-  // "home-section flex justify-center items-start px-4 text-justify h-full",
 
   const main = document.querySelector("main");
   main.innerHTML = "";

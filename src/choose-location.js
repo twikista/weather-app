@@ -75,7 +75,7 @@ function defaultLoactionForm() {
 
   const overlay = helper.createElement("div", [form], {
     class:
-      "overlay close-modal fixed inset-0 top-[-150px]  z-10 bg-[rgba(0,0,0,0.5)] flex justify-center items-center px-4 min-w-[270px] ",
+      "overlay close-modal fixed inset-0  z-10 bg-[rgba(0,0,0,0.5)] flex justify-center items-center px-4 min-w-[270px] ",
   });
   return overlay;
 }
