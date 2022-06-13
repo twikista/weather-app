@@ -27,17 +27,14 @@ function setDefaultLocation() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const location = input.value;
-      // store.setLocation(location);
-      console.log(location);
+      renderState.setIsRenderingDefault(true);
       getData(location);
-      //console.log(isDefault);
       input.value = "";
     });
   }
 }
 
 function closeDefaultLocationModal() {
-  //const form = document.querySelector(".default-location-form");
   const overlay = document.querySelector(".overlay");
   if (overlay) {
     overlay.addEventListener("click", (e) => {
@@ -45,7 +42,6 @@ function closeDefaultLocationModal() {
       if (target.classList.contains("close-modal")) {
         overlay.remove();
       }
-      // store.setLocation("canceled");
     });
   }
 }
@@ -58,11 +54,9 @@ const updateDefaultLocationWeatherData = () => {
     if (!target.classList.contains("refresh-icon")) {
       return;
     }
-    // defaultDataStore.clearDefaultData();
     const defaultLocation = store.location();
     renderState.setIsRenderingDefault(true);
     getData(defaultLocation);
-    console.log("i got clicked!!");
   });
 };
 
@@ -105,8 +99,6 @@ const backToHome = () => {
 
 //initialize events
 const events = () => {
-  //onPageLoadHandler();
-  //renderOnPageLoad();
   setCurrentLocation();
   setDefaultLocation();
   closeDefaultLocationModal();
