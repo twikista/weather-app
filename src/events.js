@@ -6,6 +6,7 @@ import store from "./location-store";
 import togglerSwitch from "./render-temp-unit-change";
 import defaultDataStore from "./location-data-store";
 import renderState from "./renderState";
+import mainSection from "./main";
 
 //get location from user input on form
 function setCurrentLocation() {
@@ -88,12 +89,18 @@ const focusInput = () => {
 //home
 
 const backToHome = () => {
-  const appLogo = document.querySelector(".app-logo");
+  const navElement = document.querySelector(".nav");
   const mainElement = document.querySelector("main");
-  appLogo.addEventListener("click", (e) => {
-    mainElement.innerHTML = "";
-    mainElement.append(renderOnPageLoad());
-    focusInput();
+  navElement.addEventListener("click", (e) => {
+    const target = e.target;
+    if (
+      target.classList.contains("app-logo") ||
+      target.classList.contains("home-btn")
+    ) {
+      mainElement.innerHTML = "";
+      mainElement.append(renderOnPageLoad());
+      events();
+    }
   });
 };
 

@@ -70,12 +70,12 @@ function defaultLoactionForm() {
   );
   const form = helper.createElement("form", [wrapper], {
     class:
-      "default-location-form bg-gray-800 border-[] relative bottom-[] rounded-md overflow-hidden shadow-[rgba(0,0,0,0.3)_0px_19px _38px,rgba(0,0,0,0.22)_0px_15px_12px] w-[90%] max-w-[480px] min-w-[260px] animate-reveal",
+      "default-location-form bg-gray-800 border-[] relative bottom-[] rounded-md overflow-hidden shadow-[rgba(0,0,0,0.3)_0px_19px _38px,rgba(0,0,0,0.22)_0px_15px_12px] w-[90%] max-w-[480px] min-w-[260px] animate-reveal self-start",
   });
 
   const overlay = helper.createElement("div", [form], {
     class:
-      "overlay close-modal fixed inset-0  z-10 bg-[rgba(0,0,0,0.5)] flex justify-center items-center px-4 min-w-[270px] ",
+      "overlay close-modal fixed inset-0  z-10 bg-[rgba(0,0,0,0.5)] flex justify-center items-center px-4 min-w-[270px] pt-[120px]",
   });
   return overlay;
 }

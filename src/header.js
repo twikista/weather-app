@@ -89,7 +89,7 @@ const headerSection = () => {
   /*****nav element */
   const nav = helper.createElement("nav", [navLeft, navRight], {
     class:
-      "flex flex-col justify-center items-center w-[90%] sm:flex-row sm:justify-between gap-x-5",
+      "nav flex flex-col justify-center items-center w-[90%] sm:flex-row sm:justify-between gap-x-5",
   });
 
   fragment.append(nav);
