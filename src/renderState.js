@@ -3,7 +3,6 @@ const renderState = (() => {
 
   const setIsRenderingDefault = (newState) => {
     isRenderingDefault = newState;
-    console.log(isRenderingDefault);
     return isRenderingDefault;
   };
 

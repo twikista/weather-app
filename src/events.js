@@ -1,12 +1,12 @@
 import setTemperatureUnit from "./convert-weather-unit";
 import getData from "./fetch-data";
-import tranformData, { weatherData } from "./transorm-data";
+import { weatherData } from "./transorm-data";
 import renderOnPageLoad from "./home";
 import store from "./location-store";
 import togglerSwitch from "./render-temp-unit-change";
 import defaultDataStore from "./location-data-store";
 import renderState from "./renderState";
-import mainSection from "./main";
+import favoriteStore from "./favorites-store";
 
 //get location from user input on form
 function setCurrentLocation() {
@@ -87,7 +87,6 @@ const focusInput = () => {
 };
 
 //home
-
 const backToHome = () => {
   const navElement = document.querySelector(".nav");
   const mainElement = document.querySelector("main");
@@ -104,6 +103,17 @@ const backToHome = () => {
   });
 };
 
+const addToFavorite = () => {
+  const favoriteBtn = document.querySelector("main");
+  favoriteBtn.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target.classList.contains("favorite-btn")) {
+      return;
+    }
+    favoriteStore.addFavorite(weatherData);
+  });
+};
+
 //initialize events
 const events = () => {
   setCurrentLocation();
@@ -113,6 +123,7 @@ const events = () => {
   toggler();
   focusInput();
   backToHome();
+  addToFavorite();
 };
 
 export default events;

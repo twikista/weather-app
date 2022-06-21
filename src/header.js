@@ -1,4 +1,5 @@
 import * as helper from "./helper";
+import favoriteStore from "./favorites-store";
 
 const headerSection = () => {
   const fragment = new DocumentFragment();
@@ -25,10 +26,14 @@ const headerSection = () => {
       "inline-block home-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-1 sm:py-0 transiton duration-200 ease-in-out",
   });
 
-  const favSpan = helper.createElement("span", ["1"], {
-    class:
-      " font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",
-  });
+  const favSpan = helper.createElement(
+    "span",
+    [`${favoriteStore.favoritesArray().length}`],
+    {
+      class:
+        " font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",
+    }
+  );
   const favoriteButton = helper.createElement("button", ["favorite"], {
     class:
       "favorite-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-1 sm:py-0 transiton duration-200 ease-in-out ",
@@ -89,7 +94,7 @@ const headerSection = () => {
   /*****nav element */
   const nav = helper.createElement("nav", [navLeft, navRight], {
     class:
-      "nav flex flex-col justify-center items-center w-[90%] sm:flex-row sm:justify-between gap-x-5",
+      "nav flex flex-col justify-center items-center w-[90%] max-w-[1200px] sm:flex-row sm:justify-between gap-x-5 ",
   });
 
   fragment.append(nav);

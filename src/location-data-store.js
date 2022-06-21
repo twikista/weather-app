@@ -6,7 +6,6 @@ const defaultDataStore = (() => {
   function getDataFromStorage() {
     const retrievedWeatherData =
       JSON.parse(localStorage.getItem(locationKey)) || null;
-    console.log(retrievedWeatherData);
     return retrievedWeatherData;
   }
 
@@ -20,7 +19,6 @@ const defaultDataStore = (() => {
   const setData = (data) => {
     defaultLocationWeatherData = data;
     setDataToStorage();
-    console.log(defaultLocationWeatherData);
   };
 
   const clearDefaultData = () => {

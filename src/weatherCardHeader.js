@@ -54,9 +54,7 @@ const weatherCardHeader = (weather) => {
   );
   //degree special character
   const deg = helper.special("&deg;");
-  // const celsiusSpan = helper.degreeCharacter("&#8451;");
   const celsiusSpan = helper.createElement("span", ["C"], null);
-  //celsiusSpan.classList.add("text-2xl", "align-top", "inline-block", "pt-2");
   //temperature value
   const temperature = helper.createElement(
     "h1",
@@ -107,11 +105,11 @@ const weatherCardHeader = (weather) => {
       " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
   });
 
-  const timeSnap = new Date(weather.time).getTime();
+  const timeStamp = new Date(weather.time).getTime();
 
   const lastWeatherUpdateTime = helper.createElement(
     "span",
-    [`updated: ${formatDistanceToNowStrict(timeSnap)} ago`],
+    [`updated: ${formatDistanceToNowStrict(timeStamp)} ago`],
     {
       class: "update-time text-slate-400",
     }
@@ -122,6 +120,20 @@ const weatherCardHeader = (weather) => {
     [lastWeatherUpdateTime, refreshIcon],
     { class: "flex" }
   );
+
+  /*add to favorite*/
+  const favoriteIcon = helper.createElement("span", ["favorite"], {
+    class:
+      "material-icons-outlined text-pink-500 cursor-pointer text-sm pr-[3px]",
+  });
+  const addToFavoriteBTn = helper.createElement(
+    "button",
+    [favoriteIcon, "add to favorite"],
+    { class: "favorite-btn flex items-cente text-sm" }
+  );
+  const favoriteDiv = helper.createElement("div", [addToFavoriteBTn], {
+    class: "add-favorite flex items-center ",
+  });
 
   //header right
   const checkbox = helper.createElement("input", null, {
@@ -183,7 +195,7 @@ set up conditional render for headerBottom element
   const headerBottomFragment = new DocumentFragment();
   renderState.currentState()
     ? headerBottomFragment.append(timeOfWeatherUpdate, togglersWrapper)
-    : headerBottomFragment.append(togglersWrapper);
+    : headerBottomFragment.append(addToFavoriteBTn, togglersWrapper);
 
   /*
   set up class to condtionally apply to headerBottom element
@@ -193,9 +205,8 @@ set up conditional render for headerBottom element
   const usedClass = renderState.currentState() ? classOne : classTwo;
 
   const headerBottom = helper.createElement("div", [headerBottomFragment], {
-    class: `${usedClass}`,
+    class: `${classOne}`,
   });
-  console.log(usedClass);
 
   const weatherWrapper = helper.createElement(
     "div",
@@ -208,9 +219,10 @@ set up conditional render for headerBottom element
 
   const fragment = new DocumentFragment();
   // fragment.append(headerTop, weatherWrapper, headerBottom);
-  renderState.currentState()
-    ? fragment.append(headerTop, weatherWrapper, headerBottom)
-    : fragment.append(headerTop, weatherWrapper, headerBottom);
+  // renderState.currentState()
+  //   ? fragment.append(headerTop, weatherWrapper, headerBottom)
+  //   : fragment.append(headerTop, weatherWrapper, headerBottom);
+  fragment.append(headerTop, weatherWrapper, headerBottom);
 
   const defaultClass =
     "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
@@ -221,7 +233,7 @@ set up conditional render for headerBottom element
   const classApplied = renderState.currentState() ? defaultClass : currentClass;
 
   const header = helper.createElement("header", [fragment], {
-    class: `${classApplied}`,
+    class: `${defaultClass}`,
   });
   return header;
 };
