@@ -50,7 +50,7 @@ const headerSection = () => {
     [homeButton, favWrapper, settingsButton],
     {
       class:
-        "flex w-full justify-around items-end flex-1 sm:max-w-[220px] text-sm gap-x-3 ",
+        "flex w-full justify-around items-end flex-1 max-w-[320px] text-xs sm:text-sm gap-x-3 ",
     }
   );
 

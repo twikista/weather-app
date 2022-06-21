@@ -2,9 +2,8 @@ import classes from "./classes";
 import * as helper from "./helper";
 import renderUserTime from "./timeAndDate";
 import renderState from "./renderState";
-import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
-const weatherCardHeader = (weather) => {
+const weatherCardHeader = (weather, cardHeaderBottom) => {
   //header left
   const locationIcon = helper.addIcon("location_on", [classes.icons]);
   locationIcon.classList.add("text-xs", "text-indigo-400");
@@ -84,64 +83,12 @@ const weatherCardHeader = (weather) => {
       "text-sm font-barlow semibold flex items-center justify-center text-indigo-300",
   });
 
-  const tempWrapper = helper.createElement("div", [temperature, minMax], {
-    class:
-      "temp-wrapper w-4/5 flex-auto flex flex-col items-center justify-center",
-  });
-
-  //temperature and minmax wrapper
-  const weatherRight = helper.createElement("div", [tempWrapper], {
-    class: "weather-right flex flex-col justify-center items-center",
-  });
-
-  //weather
-  const divMid = helper.createElement("span", [], {
-    class: "w-[1px] bg-slate-600 h-[96px] self-center justify-self-end",
-  });
-
-  //header-bottom
-  const refreshIcon = helper.createElement("span", ["refresh"], {
-    class:
-      " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
-  });
-
-  const timeStamp = new Date(weather.time).getTime();
-
-  const lastWeatherUpdateTime = helper.createElement(
-    "span",
-    [`updated: ${formatDistanceToNowStrict(timeStamp)} ago`],
-    {
-      class: "update-time text-slate-400",
-    }
-  );
-
-  const timeOfWeatherUpdate = helper.createElement(
-    "div",
-    [lastWeatherUpdateTime, refreshIcon],
-    { class: "flex" }
-  );
-
-  /*add to favorite*/
-  const favoriteIcon = helper.createElement("span", ["favorite"], {
-    class:
-      "material-icons-outlined text-pink-500 cursor-pointer text-sm pr-[3px]",
-  });
-  const addToFavoriteBTn = helper.createElement(
-    "button",
-    [favoriteIcon, "add to favorite"],
-    { class: "favorite-btn flex items-cente text-sm" }
-  );
-  const favoriteDiv = helper.createElement("div", [addToFavoriteBTn], {
-    class: "add-favorite flex items-center ",
-  });
-
-  //header right
   const checkbox = helper.createElement("input", null, {
     type: "checkbox",
     id: "temp-toggler",
     class: "checkbox hidden",
   });
-  //label
+  /*try*/
   const toggleOnIcon = helper.createElement("span", ["toggle_on"], {
     class:
       "material-icons-outlined text-2xl  hidden toggle-on transition-[display] duration-700 ease-in ",
@@ -187,15 +134,30 @@ const weatherCardHeader = (weather) => {
     }
   );
   const togglersWrapper = helper.createElement("div", [togglers], {
-    class: "togglers-wrapper flex items-center self-end mt-auto",
+    class: "togglers-wrapper flex items-center self-center",
   });
-  /*
-set up conditional render for headerBottom element
-*/
+
+  /*end of try*/
+
+  const tempWrapper = helper.createElement(
+    "div",
+    [temperature, minMax, togglersWrapper],
+    {
+      class:
+        "temp-wrapper w-4/5 flex-auto flex flex-col items-center justify-center",
+    }
+  );
+
+  //temperature and minmax wrapper
+  const weatherRight = helper.createElement("div", [tempWrapper], {
+    class: "weather-right flex flex-col justify-center items-center",
+  });
   const headerBottomFragment = new DocumentFragment();
   renderState.currentState()
-    ? headerBottomFragment.append(timeOfWeatherUpdate, togglersWrapper)
-    : headerBottomFragment.append(addToFavoriteBTn, togglersWrapper);
+    ? headerBottomFragment.append(
+        cardHeaderBottom.timeSinceLastUpdate(weather.time)
+      )
+    : headerBottomFragment.append(cardHeaderBottom.addTofavorite());
 
   /*
   set up class to condtionally apply to headerBottom element
