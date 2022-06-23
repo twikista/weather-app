@@ -1,8 +1,13 @@
-function togglerSwitch(isToggled) {
-  const toggleOn = document.querySelector(".toggle-on");
-  const toggleOff = document.querySelector(".toggle-off");
-  const celsius = document.querySelector(".celsius");
-  const fahrenheit = document.querySelector(".fahrenheit");
+function togglerSwitch(isToggled, target) {
+  //const toggleOn = document.querySelector(".toggle-on");
+  // const toggleOff = document.querySelector(".toggle-off");
+
+  const toggleOff = target.nextElementSibling.children[0];
+  const toggleOn = target.nextElementSibling.children[1];
+  const celsius = target.previousElementSibling;
+  const fahrenheit = target.nextElementSibling.nextElementSibling;
+
+  console.log(fahrenheit);
   if (isToggled) {
     //switch toggler
     toggleOn.classList.remove("hidden");

@@ -31,7 +31,7 @@ const headerSection = () => {
     [`${favoriteStore.favoritesArray().length}`],
     {
       class:
-        " font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",
+        "favorite-count font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",
     }
   );
   const favoriteButton = helper.createElement("button", ["favorite"], {

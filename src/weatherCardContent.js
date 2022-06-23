@@ -54,7 +54,7 @@ const weatherCardContent = (weather) => {
 
   const fragment = new DocumentFragment();
   fragment.append(humidityDiv, windDiv, pressureDiv, feelsLikeDiv);
-  const otherWeatherDetails = helper.createElement("div", [fragment], {
+  const otherWeatherDetails = helper.createElement("article", [fragment], {
     class:
       "card-bottom bg-slate-800 grid grid-cols-2 grid-rows-2 gap-x-3 items-center justify-center px-4 py-2 font-fira text-sm rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] mb-3 ",
   });

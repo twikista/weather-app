@@ -2,8 +2,9 @@ import classes from "./classes";
 import * as helper from "./helper";
 import renderUserTime from "./timeAndDate";
 import renderState from "./renderState";
+import cardHeaderBottom from "./cardHeaderBottom";
 
-const weatherCardHeader = (weather, cardHeaderBottom) => {
+const weatherCardHeader = (weather) => {
   //header left
   const locationIcon = helper.addIcon("location_on", [classes.icons]);
   locationIcon.classList.add("text-xs", "text-indigo-400");
@@ -85,7 +86,7 @@ const weatherCardHeader = (weather, cardHeaderBottom) => {
 
   const checkbox = helper.createElement("input", null, {
     type: "checkbox",
-    id: "temp-toggler",
+    id: `${weather.id}`,
     class: "checkbox hidden",
   });
   /*try*/
@@ -100,7 +101,7 @@ const weatherCardHeader = (weather, cardHeaderBottom) => {
   });
   const label = helper.createElement("label", [toggleOffIcon, toggleOnIcon], {
     class: "toggler px-1 flex text-xs text-indigo-300 cursor-pointer",
-    for: "temp-toggler",
+    for: `${weather.id}`,
   });
 
   const fahrenheitSymbol = helper.createElement(
@@ -152,23 +153,28 @@ const weatherCardHeader = (weather, cardHeaderBottom) => {
   const weatherRight = helper.createElement("div", [tempWrapper], {
     class: "weather-right flex flex-col justify-center items-center",
   });
+
+  /*
   const headerBottomFragment = new DocumentFragment();
   renderState.currentState()
     ? headerBottomFragment.append(
         cardHeaderBottom.timeSinceLastUpdate(weather.time)
       )
-    : headerBottomFragment.append(cardHeaderBottom.addTofavorite());
+    : headerBottomFragment.append(cardHeaderBottom.addToFavorite());
+    */
 
   /*
   set up class to condtionally apply to headerBottom element
   */
+
   const classOne = "text-sm flex justify-between items-center";
   const classTwo = "text-sm flex justify-end items-center pr-1 pb-1";
   const usedClass = renderState.currentState() ? classOne : classTwo;
-
+  /*
   const headerBottom = helper.createElement("div", [headerBottomFragment], {
     class: `${classOne}`,
   });
+  */
 
   const weatherWrapper = helper.createElement(
     "div",
@@ -180,21 +186,12 @@ const weatherCardHeader = (weather, cardHeaderBottom) => {
   );
 
   const fragment = new DocumentFragment();
-  // fragment.append(headerTop, weatherWrapper, headerBottom);
-  // renderState.currentState()
-  //   ? fragment.append(headerTop, weatherWrapper, headerBottom)
-  //   : fragment.append(headerTop, weatherWrapper, headerBottom);
-  fragment.append(headerTop, weatherWrapper, headerBottom);
+  fragment.append(headerTop, weatherWrapper, cardHeaderBottom(weather.time));
 
   const defaultClass =
     "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
 
-  const currentClass =
-    "card-header grid grid-rows-[50px_1fr] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
-
-  const classApplied = renderState.currentState() ? defaultClass : currentClass;
-
-  const header = helper.createElement("header", [fragment], {
+  const header = helper.createElement("article", [fragment], {
     class: `${defaultClass}`,
   });
   return header;

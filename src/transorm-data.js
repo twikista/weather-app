@@ -4,6 +4,7 @@ import store from "./location-store";
 import renderCurrent from "./render-current";
 import renderState from "./renderState";
 import { userTime } from "./timeAndDate";
+import uniqid from "uniqid";
 
 export let weatherData = null;
 
@@ -12,6 +13,7 @@ export let weatherData = null;
 const tranformData = (data) => {
   weatherData = [
     {
+      id: uniqid.process(),
       weather: data.weather[0].main,
       weatherdesc: data.weather[0].description,
       temp: data.main.temp,

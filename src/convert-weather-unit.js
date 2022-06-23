@@ -14,17 +14,20 @@ function toCelsius(kelvinUnit) {
   return celsius.toFixed(0);
 }
 
-const setTemperatureUnit = (isToggled, weather) => {
-  const temperatureLabel = document.querySelector(".temperature-value");
-  temperatureLabel.innerHTML = "";
-  const temp = isToggled
-    ? toFahrenheit(weather[0].temp.toFixed(0))
-    : weather[0].temp.toFixed(0);
+const setTemperatureUnit = (isToggled, weather, target) => {
+  //const temperatureLabel = document.querySelector(".temperature-value");
+  // temperatureLabel.innerHTML = "";
+  if (target) {
+    target.innerHTML = "";
+    const temp = isToggled
+      ? toFahrenheit(weather.temp.toFixed(0))
+      : weather.temp.toFixed(0);
 
-  temperatureLabel.append(
-    temp,
-    isToggled ? helper.special("&deg;F") : helper.special("&deg;C")
-  );
+    target.append(
+      temp,
+      isToggled ? helper.special("&deg;F") : helper.special("&deg;C")
+    );
+  }
 };
 
 export default setTemperatureUnit;
