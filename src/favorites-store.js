@@ -24,6 +24,8 @@ const favoriteStore = (() => {
 
   const deleteFavorite = (id) => {
     const newFavorites = favorites.filter((favorite) => favorite.id !== id);
+    favorites = newFavorites;
+    setFavoritesToStorage();
   };
 
   const clearDefaultData = () => {

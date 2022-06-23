@@ -19,6 +19,7 @@ function setCurrentLocation() {
     e.preventDefault();
     const location = input.value;
     renderState.setIsRenderingDefault(false);
+    favoriteState.setIsRenderingFavorite(false);
     getData(location);
     input.value = "";
   });
@@ -117,6 +118,7 @@ const backToHome = () => {
     ) {
       favoriteState.setIsRenderingFavorite(false);
       console.log(favoriteState.currentFavoriteState());
+      console.log(renderState.currentState());
       mainElement.innerHTML = "";
       mainElement.append(renderOnPageLoad());
       events();
@@ -125,15 +127,31 @@ const backToHome = () => {
 };
 
 const addToFavorite = () => {
-  const favoriteBtn = document.querySelector("main");
+  const main = document.querySelector("main");
   const favorite = document.querySelector(".favorite-count");
-  favoriteBtn.addEventListener("click", (e) => {
+  main.addEventListener("click", (e) => {
     const target = e.target;
     if (!target.classList.contains("favorite-btn")) {
       return;
     }
     favoriteStore.addFavorite(weatherData);
     favorite.textContent = `${favoriteStore.favoritesArray().length}`; //move to helper funtions
+    renderState.setIsRenderingDefault(true);
+  });
+};
+
+const deletefavorite = () => {
+  const main = document.querySelector("main");
+  main.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!target.classList.contains("remove-favorite")) {
+      return;
+    }
+    console.log(target);
+    const id = target.id;
+    console.log(id);
+    favoriteStore.deleteFavorite(id);
+    renderFavorite();
   });
 };
 
@@ -141,6 +159,8 @@ const fav = () => {
   const favBtn = document.querySelector(".favorite-btn");
   favBtn.addEventListener("click", (e) => {
     favoriteState.setIsRenderingFavorite(true);
+    console.log(renderState.currentState());
+
     console.log(favoriteState.currentFavoriteState());
     renderFavorite();
   });
@@ -156,6 +176,7 @@ const events = () => {
   focusInput();
   backToHome();
   addToFavorite();
+  deletefavorite();
   fav();
 };
 

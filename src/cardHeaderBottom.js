@@ -3,14 +3,14 @@ import renderState from "./renderState";
 import favoriteState from "./favoriteState";
 import { formatDistanceToNowStrict } from "date-fns";
 
-const cardHeaderBottom = (time) => {
-  const timeSinceLastUpdate = (time) => {
+const cardHeaderBottom = (data, id) => {
+  const timeSinceLastUpdate = (data) => {
     const refreshIcon = helper.createElement("span", ["refresh"], {
       class:
         " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
     });
 
-    const timeStamp = new Date(time).getTime();
+    const timeStamp = new Date(data).getTime();
 
     const lastWeatherUpdateTime = helper.createElement(
       "span",
@@ -53,8 +53,8 @@ const cardHeaderBottom = (time) => {
     });
     const removeFromFavoriteBtn = helper.createElement(
       "span",
-      [removeIcon, "remove frpm favorite"],
-      { class: "flex items-center" }
+      [removeIcon, "remove"],
+      { id: `${id}`, data, class: "remove-favorite flex items-center" }
     );
     return removeFromFavoriteBtn;
   };
@@ -62,7 +62,7 @@ const cardHeaderBottom = (time) => {
   const headerBottomLeftFragment = new DocumentFragment();
 
   renderState.currentState()
-    ? headerBottomLeftFragment.append(timeSinceLastUpdate(time))
+    ? headerBottomLeftFragment.append(timeSinceLastUpdate(data))
     : headerBottomLeftFragment.append(addToFavorite());
 
   const headerBottomLeft = helper.createElement(

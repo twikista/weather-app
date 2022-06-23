@@ -186,7 +186,11 @@ const weatherCardHeader = (weather) => {
   );
 
   const fragment = new DocumentFragment();
-  fragment.append(headerTop, weatherWrapper, cardHeaderBottom(weather.time));
+  fragment.append(
+    headerTop,
+    weatherWrapper,
+    cardHeaderBottom(weather.time, weather.id)
+  );
 
   const defaultClass =
     "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
