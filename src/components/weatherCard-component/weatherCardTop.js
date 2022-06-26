@@ -1,12 +1,13 @@
-import classes from "./classes";
-import * as helper from "./helper";
-import renderUserTime from "./timeAndDate";
-import renderState from "./renderState";
+import styles from "../../classes";
+import * as helper from "../../helper";
+import renderUserTime from "../../timeAndDate";
+import renderHomeState from "../../states/home-state";
 import cardHeaderBottom from "./cardHeaderBottom";
+import { parseISO } from "date-fns";
 
-const weatherCardHeader = (weather) => {
+const weatherCardTop = (weather) => {
   //header left
-  const locationIcon = helper.addIcon("location_on", [classes.icons]);
+  const locationIcon = helper.addIcon("location_on", [styles.icons]);
   locationIcon.classList.add("text-xs", "text-indigo-400");
   const city = helper.createElement("span", [`${weather.city}, `], null);
   const location = helper.createElement(
@@ -169,7 +170,7 @@ const weatherCardHeader = (weather) => {
 
   const classOne = "text-sm flex justify-between items-center";
   const classTwo = "text-sm flex justify-end items-center pr-1 pb-1";
-  const usedClass = renderState.currentState() ? classOne : classTwo;
+  const usedClass = renderHomeState.renderingHome() ? classOne : classTwo;
   /*
   const headerBottom = helper.createElement("div", [headerBottomFragment], {
     class: `${classOne}`,
@@ -189,7 +190,7 @@ const weatherCardHeader = (weather) => {
   fragment.append(
     headerTop,
     weatherWrapper,
-    cardHeaderBottom(weather.time, weather.id)
+    cardHeaderBottom(weather, weather.id)
   );
 
   const defaultClass =
@@ -197,8 +198,9 @@ const weatherCardHeader = (weather) => {
 
   const header = helper.createElement("article", [fragment], {
     class: `${defaultClass}`,
+    id: `weather-card-${weather.id}`,
   });
   return header;
 };
 
-export default weatherCardHeader;
+export default weatherCardTop;

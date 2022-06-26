@@ -1,9 +1,10 @@
 import "./style.css";
 import events from "./events";
 import initialize from "./others";
-import headerSection from "./header";
-import mainSection from "./main";
-import footerSection from "./footer";
+import headerSection from "./components/header";
+import mainSection from "./components/main";
+import footerSection from "./components/footer";
+import initialPageLoad from "./routing/page-load-routes";
 
 function app() {
   const fragment = new DocumentFragment();
@@ -29,4 +30,5 @@ function app() {
 app();
 events();
 initialize();
+initialPageLoad();
 export default app;

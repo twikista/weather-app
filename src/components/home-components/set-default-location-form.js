@@ -1,6 +1,6 @@
-import * as helper from "./helper";
+import * as helper from "../../helper";
 
-function defaultLoactionForm() {
+function setDefaultLoactionForm() {
   const formTitle = helper.createElement(
     "h3",
     ["Set default weather location"],
@@ -80,4 +80,4 @@ function defaultLoactionForm() {
   return overlay;
 }
 
-export default defaultLoactionForm;
+export default setDefaultLoactionForm;

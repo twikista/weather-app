@@ -1,5 +1,5 @@
-import * as helper from "./helper";
-import favoriteStore from "./favorites-store";
+import * as helper from "../helper";
+import favorites from "../data/favorites-data";
 
 const headerSection = () => {
   const fragment = new DocumentFragment();
@@ -28,7 +28,7 @@ const headerSection = () => {
 
   const favSpan = helper.createElement(
     "span",
-    [`${favoriteStore.favoritesArray().length}`],
+    [`${favorites.favoritesData().length}`],
     {
       class:
         "favorite-count font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",

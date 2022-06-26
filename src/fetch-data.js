@@ -4,6 +4,7 @@ import { checkError, displayOnError } from "./error";
 
 let isLoading = true;
 const getData = async (city) => {
+  console.log(city);
   try {
     const API_KEY = "3ceb8852b9b6a1fd8a8191af7243397f";
     loading(isLoading);

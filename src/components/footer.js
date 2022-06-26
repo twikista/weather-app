@@ -1,5 +1,5 @@
-import styles from "./classes";
-import * as helper from "./helper";
+import styles from "../classes";
+import * as helper from "../helper";
 
 const footerSection = () => {
   //icons

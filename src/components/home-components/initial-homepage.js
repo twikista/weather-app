@@ -1,8 +1,8 @@
-import * as helper from "./helper";
-import defaultLoactionForm from "./choose-location";
-import store from "./location-store";
+import * as helper from "../../helper";
+import setDefaultLoactionForm from "./set-default-location-form";
+import defaultLocation from "../../data/default-location";
 
-function initialPageRender() {
+function initialHomepage() {
   const header = helper.createElement(
     "h2",
     ["Get Accurate Weather Details by the Second"],
@@ -26,14 +26,10 @@ function initialPageRender() {
       "home-section flex justify-center items-start px-4 text-justify h-full",
   });
 
-  console.log(store.location());
-
-  if (store.location() === null) {
-    section.append(defaultLoactionForm());
+  if (defaultLocation.savedLocation() === null) {
+    section.append(setDefaultLoactionForm());
   }
-
-  console.log(!store.location());
   return section;
 }
 
-export default initialPageRender;
+export default initialHomepage;

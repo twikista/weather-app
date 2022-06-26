@@ -1,5 +1,5 @@
-import defaultDataStore from "./location-data-store";
-import renderState from "./renderState";
+import defaultDataStore from "./data/default-location-data";
+import renderHomeState from "./states/home-state";
 import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
 function autoUpdateTime() {

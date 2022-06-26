@@ -1,15 +1,16 @@
-import setTemperatureUnit from "./convert-weather-unit";
+import setTemperatureUnit from "./toggle-weather-unit";
 import getData from "./fetch-data";
 import { weatherData } from "./transorm-data";
-import renderOnPageLoad from "./home";
-import store from "./location-store";
-import togglerSwitch from "./render-temp-unit-change";
-import defaultDataStore from "./location-data-store";
-import renderState from "./renderState";
-import favoriteStore from "./favorites-store";
-import favoriteState from "./favoriteState";
-import renderFavorite from "./renderFavorites";
-import dataController from "./data-controller";
+import defaultLocation from "./data/default-location";
+import togglerSwitch from "./components/weatherCard-component/render-weather-unit";
+import defaultDataStore from "./data/default-location-data";
+import renderHomeState from "./states/home-state";
+import favorites from "./data/favorites-data";
+import renderFavoriteState from "./states/favorite-state";
+import renderFavorite from "./components/main-components/renderFavorites";
+import dataController from "./data/data-controller";
+import renderHome from "./components/main-components/renderHome";
+import renderingState from "./states/state";
 
 //get location from user input on form
 function setCurrentLocation() {
@@ -18,8 +19,10 @@ function setCurrentLocation() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const location = input.value;
-    renderState.setIsRenderingDefault(false);
-    favoriteState.setIsRenderingFavorite(false);
+    renderingState.searchOutput();
+    // renderHomeState.setIsRenderingHome(false);
+    // renderFavoriteState.setIsRenderingFavorite(false);
+    renderingState.searchOutput();
     getData(location);
     input.value = "";
   });
@@ -32,7 +35,7 @@ function setDefaultLocation() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const location = input.value;
-      renderState.setIsRenderingDefault(true);
+      renderHomeState.setIsRenderingDefault(true);
       getData(location);
       input.value = "";
     });
@@ -59,9 +62,22 @@ const updateDefaultLocationWeatherData = () => {
     if (!target.classList.contains("refresh-icon")) {
       return;
     }
-    const defaultLocation = store.location();
-    renderState.setIsRenderingDefault(true);
-    getData(defaultLocation);
+    const location = defaultLocation.savedLocation();
+    if (renderingState.isTruthy()) {
+      let location = null;
+      const favoritesArray = favorites.favoritesData();
+      const id = target.closest(".bottom-div").parentElement.id.split("-")[2];
+      favoritesArray.forEach((i) => {
+        if (i.id === id) location = i.city;
+      });
+
+      console.log(location);
+      getData(location);
+      return;
+    }
+    // renderState.setIsRenderingDefault(true);
+
+    getData(location);
   });
 };
 
@@ -81,7 +97,8 @@ const toggler = () => {
     const id = target.id;
     console.log(id);
     const isToggled = target.checked;
-    const data = dataController();
+    const data = dataController(weatherData);
+    console.log(data);
     let index = null;
     data.forEach((item, i) => {
       if (item.id === id) {
@@ -116,11 +133,12 @@ const backToHome = () => {
       target.classList.contains("app-logo") ||
       target.classList.contains("home-btn")
     ) {
-      favoriteState.setIsRenderingFavorite(false);
-      console.log(favoriteState.currentFavoriteState());
-      console.log(renderState.currentState());
-      mainElement.innerHTML = "";
-      mainElement.append(renderOnPageLoad());
+      // renderFavoriteState.setIsRenderingFavorite(false);
+      renderingState.home();
+      console.log(renderFavoriteState.renderingFavorite());
+      console.log(renderHomeState.renderingHome());
+      // mainElement.innerHTML = "";
+      renderHome();
       events();
     }
   });
@@ -128,29 +146,29 @@ const backToHome = () => {
 
 const addToFavorite = () => {
   const main = document.querySelector("main");
-  const favorite = document.querySelector(".favorite-count");
+  const favoriteCount = document.querySelector(".favorite-count");
   main.addEventListener("click", (e) => {
     const target = e.target;
     if (!target.classList.contains("favorite-btn")) {
       return;
     }
-    favoriteStore.addFavorite(weatherData);
-    favorite.textContent = `${favoriteStore.favoritesArray().length}`; //move to helper funtions
-    renderState.setIsRenderingDefault(true);
+    favorites.addFavorite(weatherData);
+    favoriteCount.textContent = `${favorites.favoritesData().length}`; //move to helper funtions
   });
 };
 
 const deletefavorite = () => {
   const main = document.querySelector("main");
+  const favoriteCount = document.querySelector(".favorite-count");
   main.addEventListener("click", (e) => {
     const target = e.target;
     if (!target.classList.contains("remove-favorite")) {
       return;
     }
-    console.log(target);
     const id = target.id;
     console.log(id);
-    favoriteStore.deleteFavorite(id);
+    favorites.deleteFavorite(id);
+    favoriteCount.textContent = `${favorites.favoritesData().length}`;
     renderFavorite();
   });
 };
@@ -158,10 +176,7 @@ const deletefavorite = () => {
 const fav = () => {
   const favBtn = document.querySelector(".favorite-btn");
   favBtn.addEventListener("click", (e) => {
-    favoriteState.setIsRenderingFavorite(true);
-    console.log(renderState.currentState());
-
-    console.log(favoriteState.currentFavoriteState());
+    renderingState.favorites();
     renderFavorite();
   });
 };

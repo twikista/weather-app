@@ -1,10 +1,14 @@
 // import weatherCard from "./weatherCard";
-import defaultDataStore from "./location-data-store";
-import store from "./location-store";
-import renderCurrent from "./render-current";
-import renderState from "./renderState";
+import favorites from "./data/favorites-data";
+import defaultLocation from "./data/default-location";
+import defaultDataStore from "./data/default-location-data";
+import renderSearchedLocation from "./components/home-components/render-searched-location";
+import renderHomeState from "./states/home-state";
 import { userTime } from "./timeAndDate";
+import renderFavoriteState from "./states/favorite-state";
 import uniqid from "uniqid";
+import renderFavorite from "./components/main-components/renderFavorites";
+import configuredHomepage from "./components/home-components/configured-homepage";
 
 export let weatherData = null;
 
@@ -27,22 +31,38 @@ const tranformData = (data) => {
       city: data.name,
       timeZone: data.timezone,
       time: userTime(data.timezone),
+      currentTime: new Date().getTime(),
       //time: data.dt,
       icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`,
     },
   ];
+
+  if (
+    renderHomeState.renderingHome() &&
+    renderFavoriteState.renderingFavorite()
+  ) {
+    console.log(weatherData);
+    favorites.updateFavorites(weatherData);
+    console.log("bla!");
+    renderFavorite(favorites.favoritesData());
+    return;
+  }
+
   console.log(weatherData);
-  console.log(renderState.currentState());
-  if (renderState.currentState()) {
+  // console.log(renderState.currentState() && !favoriteState);
+  if (
+    renderHomeState.renderingHome() &&
+    !renderFavoriteState.renderingFavorite()
+  ) {
     defaultDataStore.setData(weatherData);
-    store.setLocation(weatherData[0].city);
+    defaultLocation.setLocation(weatherData[0].city);
     console.log("i ran");
-    renderCurrent(defaultDataStore.defaultLocationData());
+    configuredHomepage(defaultDataStore.defaultLocationData());
     return;
   }
 
   console.log(defaultDataStore.defaultRequestState());
-  renderCurrent(weatherData);
+  renderSearchedLocation(weatherData);
 };
 
 export default tranformData;

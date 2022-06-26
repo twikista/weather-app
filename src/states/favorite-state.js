@@ -1,4 +1,4 @@
-const favoriteState = (() => {
+const renderFavoriteState = (() => {
   let isRenderingFavorite = false;
 
   const setIsRenderingFavorite = (newState) => {
@@ -6,13 +6,13 @@ const favoriteState = (() => {
     return isRenderingFavorite;
   };
 
-  const currentFavoriteState = () => {
+  const renderingFavorite = () => {
     return isRenderingFavorite;
   };
 
   console.log(isRenderingFavorite);
 
-  return { setIsRenderingFavorite, currentFavoriteState };
+  return { setIsRenderingFavorite, renderingFavorite };
 })();
 
-export default favoriteState;
+export default renderFavoriteState;

@@ -1,6 +1,6 @@
-import * as helper from "./helper";
-import styles from "./classes";
-const weatherCardContent = (weather) => {
+import * as helper from "../../helper";
+import styles from "../../classes";
+const weatherCardBottom = (weather) => {
   const feelsLikeIcon = helper.createElement("span", ["thermostat"], {
     class: `material-icons-outlined ${styles.icons}`,
   });
@@ -62,4 +62,4 @@ const weatherCardContent = (weather) => {
   return otherWeatherDetails;
 };
 
-export default weatherCardContent;
+export default weatherCardBottom;

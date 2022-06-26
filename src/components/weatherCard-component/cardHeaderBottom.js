@@ -1,22 +1,26 @@
-import * as helper from "./helper";
-import renderState from "./renderState";
-import favoriteState from "./favoriteState";
-import { formatDistanceToNowStrict } from "date-fns";
+import * as helper from "../../helper";
+import renderHomeState from "../../states/home-state";
+import renderFavoriteState from "../../states/favorite-state";
+import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
-const cardHeaderBottom = (data, id) => {
+const cardHeaderBottom = (data) => {
   const timeSinceLastUpdate = (data) => {
     const refreshIcon = helper.createElement("span", ["refresh"], {
       class:
-        " refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
+        "refresh-icon material-icons-outlined  text-pink-500 cursor-pointer hover:scale-110 hover:font-bold transiton-[scale] duration-200 ease-in",
     });
 
-    const timeStamp = new Date(data).getTime();
+    // const timeStamp = new Date(data).getTime();
+    // const timeStamp1 = new Date().getTime();
+    // console.log(formatDistanceToNowStrict(data.currentTime));
+    // const lastupdated = formatDistanceToNowStrict(timeStamp);
+    // console.log(data.currentTime);
 
     const lastWeatherUpdateTime = helper.createElement(
       "span",
-      [`Updated: ${formatDistanceToNowStrict(timeStamp)} ago`],
+      [`Updated: ${formatDistanceToNowStrict(data.currentTime)} ago`],
       {
-        class: "update-time text-slate-400  text-[10px] sm:text-xs",
+        class: "last-updated- text-slate-400  text-[10px] sm:text-xs",
       }
     );
 
@@ -54,14 +58,14 @@ const cardHeaderBottom = (data, id) => {
     const removeFromFavoriteBtn = helper.createElement(
       "span",
       [removeIcon, "remove"],
-      { id: `${id}`, data, class: "remove-favorite flex items-center" }
+      { id: `${data.id}`, class: "remove-favorite flex items-center" }
     );
     return removeFromFavoriteBtn;
   };
 
   const headerBottomLeftFragment = new DocumentFragment();
 
-  renderState.currentState()
+  renderHomeState.renderingHome()
     ? headerBottomLeftFragment.append(timeSinceLastUpdate(data))
     : headerBottomLeftFragment.append(addToFavorite());
 
@@ -77,15 +81,18 @@ const cardHeaderBottom = (data, id) => {
 
   const headerBottom = helper.createElement(
     "div",
-    favoriteState.currentFavoriteState()
+    renderFavoriteState.renderingFavorite()
       ? [headerBottomLeft, headerBottomRight]
       : [headerBottomLeft],
     {
-      class: ``,
+      class: `bottom-div`,
     }
   );
   //
-
+  console.log(
+    renderHomeState.renderingHome(),
+    renderFavoriteState.renderingFavorite()
+  );
   return headerBottom;
 };
 

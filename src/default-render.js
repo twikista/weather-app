@@ -1,4 +1,4 @@
-import weatherCard from "./weatherCard";
+import weatherCard from "./components/weatherCard-component/weatherCard";
 import renderState from "./renderState";
 
 const defaulPageRender = (weatherData) => {

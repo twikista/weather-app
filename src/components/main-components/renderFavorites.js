@@ -1,19 +1,18 @@
-import cardHeaderBottom from "./cardHeaderBottom";
-import * as helper from "./helper";
-import weatherCardHeader from "./weatherCardHeader";
-import favoriteStore from "./favorites-store";
+import * as helper from "../../helper";
+import weatherCardTop from "../weatherCard-component/weatherCardTop";
+import favorites from "../../data/favorites-data";
 
 function renderFavorite() {
   const main = document.querySelector("main");
-  const favorites = favoriteStore.favoritesArray();
+  const favoritesArray = favorites.favoritesData();
   let fragment = new DocumentFragment();
-  favorites.forEach((favorite) => {
+  favoritesArray.forEach((favorite) => {
     // const article = helper.createElement(
     //   "article",
     //   [weatherCardHeader(favorite)],
     //   {}
     // );
-    const weathercard = weatherCardHeader(favorite);
+    const weathercard = weatherCardTop(favorite);
     fragment.append(weathercard);
   });
   const section = helper.createElement("section", [fragment], {
