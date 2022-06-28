@@ -184,6 +184,17 @@ const loadFavorites = () => {
   });
 };
 
+const loadSettings = () => {
+  const favBtn = document.querySelector(".settings-btn");
+  favBtn.addEventListener("click", (e) => {
+    const target = e.target;
+    onClickRoutes("/settings");
+    helper.activeTab(target);
+    // renderingState.favorites();
+    // renderFavorite();
+  });
+};
+
 //initialize events
 const events = () => {
   setCurrentLocation();
@@ -196,6 +207,7 @@ const events = () => {
   addToFavorite();
   deletefavorite();
   loadFavorites();
+  loadSettings();
 };
 
 export default events;
