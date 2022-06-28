@@ -29,7 +29,11 @@ function initialHomepage() {
   if (defaultLocation.savedLocation() === null) {
     section.append(setDefaultLoactionForm());
   }
-  return section;
+
+  const main = document.querySelector("main");
+  main.innerHTML = "";
+  main.append(section);
+  return main;
 }
 
 export default initialHomepage;

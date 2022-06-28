@@ -2,6 +2,12 @@ function addClass(ele, classes) {
   classes.forEach((i) => ele.classList.add(i));
 }
 
+function removeClass(ele, classes) {
+  classes.forEach((i) => {
+    if (ele.classList.contains(i)) ele.classList.remove(i);
+  });
+}
+
 const createElement = (tag, node, attribute) => {
   const element = document.createElement(tag);
   if (node) {
@@ -38,4 +44,25 @@ const addIcon = (keyword, styles) => {
   return span;
 };
 
-export { addClass, createElement, degreeCharacter, addIcon, special };
+const activeTab = (target) => {
+  const style = [
+    "text-indigo-300",
+    "text-indigo-300",
+    "border-b-2",
+    "border-solid",
+    "border-indigo-300",
+    "active",
+  ];
+  const navButtons = document.querySelectorAll(".nav-btn");
+  navButtons.forEach((btn) =>
+    target === btn ? addClass(btn, style) : removeClass(btn, style)
+  );
+};
+export {
+  addClass,
+  createElement,
+  degreeCharacter,
+  addIcon,
+  special,
+  activeTab,
+};

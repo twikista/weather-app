@@ -11,6 +11,8 @@ import renderFavorite from "./components/main-components/renderFavorites";
 import dataController from "./data/data-controller";
 import renderHome from "./components/main-components/renderHome";
 import renderingState from "./states/state";
+import onClickRoutes from "./routing/onclick-routes";
+import * as helper from "./helper";
 
 //get location from user input on form
 function setCurrentLocation() {
@@ -59,25 +61,24 @@ const updateDefaultLocationWeatherData = () => {
   const main = document.querySelector("main");
   main.addEventListener("click", (e) => {
     const target = e.target;
-    if (!target.classList.contains("refresh-icon")) {
-      return;
-    }
-    const location = defaultLocation.savedLocation();
-    if (renderingState.isTruthy()) {
-      let location = null;
-      const favoritesArray = favorites.favoritesData();
-      const id = target.closest(".bottom-div").parentElement.id.split("-")[2];
-      favoritesArray.forEach((i) => {
-        if (i.id === id) location = i.city;
-      });
+    if (
+      target.classList.contains("update-btn") ||
+      target.classList.contains("update-icon")
+    ) {
+      if (renderingState.isTruthy()) {
+        let location = null;
+        const favoritesArray = favorites.favoritesData();
+        const id = target.closest(".bottom-div").parentElement.id.split("-")[2];
+        favoritesArray.forEach((i) => {
+          if (i.id === id) location = i.city;
+        });
 
-      console.log(location);
+        getData(location);
+        return;
+      }
+      const location = defaultLocation.savedLocation();
       getData(location);
-      return;
     }
-    // renderState.setIsRenderingDefault(true);
-
-    getData(location);
   });
 };
 
@@ -92,13 +93,9 @@ const toggler = () => {
     }
     const h1 =
       target.parentElement.parentElement.parentElement.firstElementChild;
-    console.log(target);
-    console.log(h1);
     const id = target.id;
-    console.log(id);
     const isToggled = target.checked;
     const data = dataController(weatherData);
-    console.log(data);
     let index = null;
     data.forEach((item, i) => {
       if (item.id === id) {
@@ -135,11 +132,13 @@ const backToHome = () => {
     ) {
       // renderFavoriteState.setIsRenderingFavorite(false);
       renderingState.home();
-      console.log(renderFavoriteState.renderingFavorite());
-      console.log(renderHomeState.renderingHome());
-      // mainElement.innerHTML = "";
-      renderHome();
+      // console.log(renderFavoriteState.renderingFavorite());
+      // console.log(renderHomeState.renderingHome());
+      // // mainElement.innerHTML = "";
+      // renderHome();
+      onClickRoutes("/");
       events();
+      helper.activeTab(target);
     }
   });
 };
@@ -173,11 +172,15 @@ const deletefavorite = () => {
   });
 };
 
-const fav = () => {
+const loadFavorites = () => {
   const favBtn = document.querySelector(".favorite-btn");
   favBtn.addEventListener("click", (e) => {
+    const target = e.target;
     renderingState.favorites();
-    renderFavorite();
+    onClickRoutes("/favorites");
+    helper.activeTab(target);
+    // renderingState.favorites();
+    // renderFavorite();
   });
 };
 
@@ -192,7 +195,7 @@ const events = () => {
   backToHome();
   addToFavorite();
   deletefavorite();
-  fav();
+  loadFavorites();
 };
 
 export default events;

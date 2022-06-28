@@ -3,7 +3,7 @@ import * as helper from "../../helper";
 import renderUserTime from "../../timeAndDate";
 import renderHomeState from "../../states/home-state";
 import cardHeaderBottom from "./cardHeaderBottom";
-import { parseISO } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 
 const weatherCardTop = (weather) => {
   //header left
@@ -25,34 +25,49 @@ const weatherCardTop = (weather) => {
       "header-top w-full flex justify-between items center text-sm text-indigo-200 font-barlow  font-light pt-2",
   });
   const arrow = helper.createElement("span", ["arrow_right"], {
-    class: "material-icons-outlined text-pink-500 align-middle ",
+    class: "material-icons-outlined text-pink-500 align-middle text-left ",
   });
+
+  //weather description
+  const descriptionText = helper.createElement("h5", [weather.weatherdesc], {
+    class:
+      "gray-400 font-fira font-light text-xs justify-self-start w-[115px] ml-0",
+  });
+  const weatherDescription = helper.createElement(
+    "span",
+    [arrow, descriptionText],
+    { class: "flex items-center ml-[0]" }
+  );
+
+  const lastWeatherUpdateTime = helper.createElement(
+    "span",
+    [`Updated: ${formatDistanceToNowStrict(weather.currentTime)} ago`],
+    {
+      class:
+        "last-updated font-fira font-light text-[11px] block text-indigo-200  text-[10px] sm:text-xs mt-[-25px]",
+    }
+  );
 
   //weather icon
   const weatherIcon = helper.createElement("img", [], {
     src: weather.icon,
     alt: "weather-icon",
-    class: "self-start -mt-5 w-[110px] h-[110px]",
+    class: "self-center -mt-5 w-[100px] h-[100px]",
   });
 
-  //weather description
-  const weatherdescription = helper.createElement(
-    "h5",
-    [arrow, weather.weatherdesc],
-    {
-      class:
-        "gray-400 font-fira font-light text-xs self-start justify-self-start w-[115px]",
-    }
-  );
-
   //weather icon and description wrapper
-  const weatherLeft = helper.createElement(
-    "div",
-    [weatherdescription, weatherIcon],
-    {
-      class: "flex flex-col items-center justify-center text-sm pt-3",
-    }
-  );
+  const weatherLeft = renderHomeState.renderingHome()
+    ? helper.createElement(
+        "div",
+        [weatherDescription, weatherIcon, lastWeatherUpdateTime],
+        {
+          class:
+            "grid grid-cols-1 grid-rows-[20px_1fr-auto] items-center justify-center w-full text-sm pt-2",
+        }
+      )
+    : helper.createElement("div", [weatherDescription, weatherIcon], {
+        class: "flex flex-col items-center justify-center text-sm pt-2",
+      });
   //degree special character
   const deg = helper.special("&deg;");
   const celsiusSpan = helper.createElement("span", ["C"], null);
@@ -194,7 +209,7 @@ const weatherCardTop = (weather) => {
   );
 
   const defaultClass =
-    "card-header grid grid-rows-[50px_1fr_50px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
+    "card-header grid grid-rows-[40px_1fr_60px] grid-cols-1 justify-center items-center w-full bg-slate-800 mb-3 mt-5 pt-2 px-4 rounded-lg shadow-[rgba(0,0,0,0.16)_0px_3px_6px,rgba(0,0,0,0.23)_0px_3px_6px] font-sanspro";
 
   const header = helper.createElement("article", [fragment], {
     class: `${defaultClass}`,

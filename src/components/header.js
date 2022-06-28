@@ -23,7 +23,7 @@ const headerSection = () => {
   */
   const homeButton = helper.createElement("button", ["home"], {
     class:
-      "inline-block home-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-1 sm:py-0 transiton duration-200 ease-in-out",
+      "inline-block home-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 sm:py-0 transiton duration-200 ease-in-out nav-btn text-indigo-300 text-indigo-300 border-b-2 border-solid border-indigo-300 py-2 active",
   });
 
   const favSpan = helper.createElement(
@@ -31,19 +31,19 @@ const headerSection = () => {
     [`${favorites.favoritesData().length}`],
     {
       class:
-        "favorite-count font-light rounded-full bg-indigo-400 h-[18px] w-[18px] bottom-[-10] flex justify-center item-center text-[10px] ml-[2px]",
+        "favorite-count font-light rounded-full bg-indigo-600 h-[18px] w-[18px] bottom-[-10] flex justify-center items-center text-[10px] font-bold ml-[2px]",
     }
   );
   const favoriteButton = helper.createElement("button", ["favorite"], {
     class:
-      "favorite-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-1 sm:py-0 transiton duration-200 ease-in-out ",
+      "favorite-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-2 sm:py-0 transiton duration-200 ease-in-out nav-btn ",
   });
   const favWrapper = helper.createElement("span", [favoriteButton, favSpan], {
     class: "flex items-center",
   });
   const settingsButton = helper.createElement("button", ["settings"], {
     class:
-      "settings-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-1 sm:py-0 transiton duration-200 ease-in-out",
+      "settings-btn uppercase font-semibold text-gray-300 border-0 hover:text-indigo-300 focus:text-indigo-300 focus:border-b-2 focus:border-solid focus:border-indigo-300 py-2 sm:py-0 transiton duration-200 ease-in-out nav-btn",
   });
   const navMenu = helper.createElement(
     "div",
