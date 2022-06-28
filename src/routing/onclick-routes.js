@@ -3,14 +3,11 @@ import renderFavorite from "../components/main-components/renderFavorites";
 import renderSettings from "../components/main-components/settings";
 
 const routes = {
-  "/": renderHome,
-  "/favorites": renderFavorite,
-  "/settings": renderSettings,
+  "/weather-app": renderHome,
+  "/weather-app/favorites": renderFavorite,
+  "/weather-app/settings": renderSettings,
 };
 const onClickRoutes = (pathName) => {
-  console.log(pathName);
-  console.log(routes[pathName]);
-
   window.history.pushState(
     {},
     pathName,
