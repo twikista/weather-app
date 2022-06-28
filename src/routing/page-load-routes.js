@@ -4,9 +4,9 @@ import renderFavorite from "../components/main-components/renderFavorites";
 import renderSettings from "../components/main-components/settings";
 
 const routes = {
-  "/weather-app": renderHome,
-  "/weather-app/favorites": renderFavorite,
-  "/weather-app/settings": renderSettings,
+  "https://twikista.github.io/": renderHome,
+  "https://twikista.github.io/weather-app/": renderFavorite,
+  "https://twikista.github.io/weather-app/": renderSettings,
 };
 
 const initialPageLoad = () => {

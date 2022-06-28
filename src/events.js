@@ -136,7 +136,7 @@ const backToHome = () => {
       // console.log(renderHomeState.renderingHome());
       // // mainElement.innerHTML = "";
       // renderHome();
-      onClickRoutes("/");
+      onClickRoutes("/weather-app");
       events();
       helper.activeTab(target);
     }
@@ -177,7 +177,7 @@ const loadFavorites = () => {
   favBtn.addEventListener("click", (e) => {
     const target = e.target;
     renderingState.favorites();
-    onClickRoutes("/favorites");
+    onClickRoutes("/weather-app/favorites");
     helper.activeTab(target);
     // renderingState.favorites();
     // renderFavorite();
@@ -188,7 +188,7 @@ const loadSettings = () => {
   const favBtn = document.querySelector(".settings-btn");
   favBtn.addEventListener("click", (e) => {
     const target = e.target;
-    onClickRoutes("/settings");
+    onClickRoutes("/weather-app/settings");
     helper.activeTab(target);
     // renderingState.favorites();
     // renderFavorite();
