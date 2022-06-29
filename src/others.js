@@ -11,7 +11,6 @@ function autoUpdateTime() {
       timeSnap
     )} ago`;
   }
-  console.log(updateTime.textContent);
 }
 
 function setTimeOut() {

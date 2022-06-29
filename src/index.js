@@ -4,7 +4,7 @@ import initialize from "./others";
 import headerSection from "./components/header";
 import mainSection from "./components/main";
 import footerSection from "./components/footer";
-import callRoutes from "./routing/call-routies";
+import initializeHome from "./components/initialize-home";
 
 function app() {
   const fragment = new DocumentFragment();
@@ -30,5 +30,5 @@ function app() {
 app();
 events();
 initialize();
-callRoutes();
+initializeHome();
 export default app;

@@ -11,8 +11,8 @@ import renderFavorite from "./components/main-components/renderFavorites";
 import dataController from "./data/data-controller";
 import renderHome from "./components/main-components/renderHome";
 import renderingState from "./states/state";
-import onClickRoutes from "./routing/onclick-routes";
 import * as helper from "./helper";
+import renderSettings from "./components/main-components/settings";
 
 //get location from user input on form
 function setCurrentLocation() {
@@ -134,9 +134,8 @@ const backToHome = () => {
       renderingState.home();
       // console.log(renderFavoriteState.renderingFavorite());
       // console.log(renderHomeState.renderingHome());
-      // // mainElement.innerHTML = "";
-      // renderHome();
-      onClickRoutes("/weather-app");
+      mainElement.innerHTML = "";
+      renderHome();
       events();
       helper.activeTab(target);
     }
@@ -177,10 +176,9 @@ const loadFavorites = () => {
   favBtn.addEventListener("click", (e) => {
     const target = e.target;
     renderingState.favorites();
-    onClickRoutes("/weather-app/favorites");
     helper.activeTab(target);
-    // renderingState.favorites();
-    // renderFavorite();
+    renderingState.favorites();
+    renderFavorite();
   });
 };
 
@@ -188,10 +186,8 @@ const loadSettings = () => {
   const favBtn = document.querySelector(".settings-btn");
   favBtn.addEventListener("click", (e) => {
     const target = e.target;
-    onClickRoutes("/weather-app/settings");
     helper.activeTab(target);
-    // renderingState.favorites();
-    // renderFavorite();
+    renderSettings();
   });
 };
 
