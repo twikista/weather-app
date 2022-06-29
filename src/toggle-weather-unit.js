@@ -1,4 +1,3 @@
-import { toggler } from "./events";
 import * as helper from "./helper";
 
 //convert kelvin unit to Fahrenheit
@@ -15,8 +14,6 @@ function toCelsius(kelvinUnit) {
 }
 
 const setTemperatureUnit = (isToggled, weather, target) => {
-  //const temperatureLabel = document.querySelector(".temperature-value");
-  // temperatureLabel.innerHTML = "";
   if (target) {
     target.innerHTML = "";
     const temp = isToggled

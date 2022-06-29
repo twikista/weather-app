@@ -41,27 +41,21 @@ const tranformData = (data) => {
     renderHomeState.renderingHome() &&
     renderFavoriteState.renderingFavorite()
   ) {
-    console.log(weatherData);
     favorites.updateFavorites(weatherData);
-    console.log("bla!");
     renderFavorite(favorites.favoritesData());
     return;
   }
 
-  console.log(weatherData);
-  // console.log(renderState.currentState() && !favoriteState);
   if (
     renderHomeState.renderingHome() &&
     !renderFavoriteState.renderingFavorite()
   ) {
     defaultDataStore.setData(weatherData);
     defaultLocation.setLocation(weatherData[0].city);
-    console.log("i ran");
     configuredHomepage(defaultDataStore.defaultLocationData());
     return;
   }
 
-  console.log(defaultDataStore.defaultRequestState());
   renderSearchedLocation(weatherData);
 };
 
