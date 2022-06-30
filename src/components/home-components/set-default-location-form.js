@@ -6,7 +6,7 @@ function setDefaultLoactionForm() {
     ["Set default weather location"],
     {
       class:
-        "text-lg font-bold sm:text-2xl text-gray-300 bg-purple-600 text-center py-2",
+        "text-base font-bold sm:text-2xl text-gray-300 bg-purple-600 text-center py-3 sm:py-5 uppercase",
     }
   );
 

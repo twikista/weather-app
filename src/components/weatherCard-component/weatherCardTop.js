@@ -44,7 +44,7 @@ const weatherCardTop = (weather) => {
     [`Updated: ${formatDistanceToNowStrict(weather.currentTime)} ago`],
     {
       class:
-        "last-updated font-fira font-light text-[11px] block text-indigo-200  text-[10px] sm:text-xs mt-[-25px]",
+        "last-updated font-fira font-light text-[11px] block text-indigo-200  text-[9px] sm:text-xs mt-[-25px]",
     }
   );
 

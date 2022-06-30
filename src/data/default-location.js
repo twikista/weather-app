@@ -4,7 +4,6 @@ const defaultLocation = (() => {
 
   function getLocationFromStorage() {
     const retrievedLocation = localStorage.getItem(locationKey) || null;
-    console.log(retrievedLocation);
     return retrievedLocation;
   }
 

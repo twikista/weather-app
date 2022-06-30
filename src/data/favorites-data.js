@@ -5,7 +5,6 @@ const favorites = (() => {
   function getFavoritesFromStorage() {
     const retrievedFavorites =
       JSON.parse(localStorage.getItem(favoriteKey)) || [];
-    console.log(retrievedFavorites);
     return retrievedFavorites;
   }
 
@@ -14,12 +13,9 @@ const favorites = (() => {
   }
 
   const addFavorite = (favorite) => {
-    const [obj] = favorite;
-    console.log(favorite);
-    console.log(obj);
-    favoriteLocations = [...favoriteLocations, obj];
+    const [favoriteObject] = favorite;
+    favoriteLocations = [...favoriteLocations, favoriteObject];
     setFavoritesToStorage();
-    console.log(favoriteLocations);
   };
 
   const deleteFavorite = (id) => {
@@ -30,31 +26,15 @@ const favorites = (() => {
     setFavoritesToStorage();
   };
 
-  /*
-  const clearDefaultData = () => {
-    favoriteLocations = [];
-    setDataToStorage();
-  };
-  */
-
   const updateFavorites = ([newFavorites]) => {
-    console.log(newFavorites.lastupdated);
     const updatedArray = favoriteLocations.map((favorite) =>
       favorite.city === newFavorites.city
         ? (favorite = { ...newFavorites })
         : favorite
     );
-    console.log(updatedArray);
     favoriteLocations = updatedArray;
     setFavoritesToStorage();
-    console.log(favoriteLocations);
   };
-  /*
-  const defaultRequestState = () => {
-    isDefaultRequest = defaultLocationWeatherData === null ? true : false;
-    return isDefaultRequest;
-  };
-*/
 
   const favoritesData = () => {
     return favoriteLocations;
@@ -65,7 +45,6 @@ const favorites = (() => {
     deleteFavorite,
     favoritesData,
     updateFavorites,
-    // defaultRequestState,
   };
 })();
 

@@ -101,7 +101,7 @@ const headerSection = () => {
 
   const header = helper.createElement("header", [fragment], {
     class:
-      " px-2 sm:py-2 w-full flex justify-center bg-gray-800 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]",
+      " px-2 sm:pb-3 sm:pt-5 w-full flex justify-center bg-gray-800 shadow-[rgba(0,0,0,0.12)_0px_1px_3px,rgba(0,0,0,0.24)_0px_1px_2px]",
   });
   return header;
 };

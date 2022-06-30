@@ -10,6 +10,13 @@ const renderHome = () => {
     : fragment.append(
         configuredHomepage(defaultDataStore.defaultLocationData())
       );
+
+  const main = document.querySelector("main");
+  if (main) {
+    main.innerHTML = "";
+    main.append(fragment);
+    return;
+  }
   return fragment;
 };
 

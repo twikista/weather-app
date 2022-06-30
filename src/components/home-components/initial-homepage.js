@@ -23,17 +23,17 @@ function initialHomepage() {
 
   const section = helper.createElement("section", [contentDiv], {
     class:
-      "home-section flex justify-center items-start px-4 text-justify h-full",
+      "home-section w-[340px] sm:w-full flex justify-center items-start px-4 text-justify h-full",
   });
 
   if (defaultLocation.savedLocation() === null) {
     section.append(setDefaultLoactionForm());
   }
 
-  const main = document.querySelector("main");
-  main.innerHTML = "";
-  main.append(section);
-  return main;
+  // const main = document.querySelector("main");
+  // main.innerHTML = "";
+  // main.append(section);
+  return section;
 }
 
 export default initialHomepage;

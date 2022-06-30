@@ -9,10 +9,9 @@ import renderFavoriteState from "./states/favorite-state";
 import uniqid from "uniqid";
 import renderFavorite from "./components/main-components/renderFavorites";
 import configuredHomepage from "./components/home-components/configured-homepage";
+import renderHome from "./components/main-components/renderHome";
 
 export let weatherData = null;
-
-//import { isDefault } from "./events";
 
 const tranformData = (data) => {
   weatherData = [
@@ -41,6 +40,10 @@ const tranformData = (data) => {
     renderHomeState.renderingHome() &&
     renderFavoriteState.renderingFavorite()
   ) {
+    console.log(
+      renderHomeState.renderingHome(),
+      renderFavoriteState.renderingFavorite()
+    );
     favorites.updateFavorites(weatherData);
     renderFavorite(favorites.favoritesData());
     return;
@@ -52,7 +55,11 @@ const tranformData = (data) => {
   ) {
     defaultDataStore.setData(weatherData);
     defaultLocation.setLocation(weatherData[0].city);
-    configuredHomepage(defaultDataStore.defaultLocationData());
+    // configuredHomepage(defaultDataStore.defaultLocationData());
+    const main = document.querySelector("main");
+    // main.innerHTML = "";
+    // main.append(renderHome());
+    renderHome();
     return;
   }
 

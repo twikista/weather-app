@@ -20,8 +20,6 @@ function renderFavorite() {
     const wrapper = helper.createElement("div", [sadFaceIcon, text], {
       class: "flex flex-col justify-center items-center gap-y-[50px]",
     });
-    // const fragment = new DocumentFragment();
-    // fragment.append(sadFaceIcon, text);
     return wrapper;
   };
 
@@ -29,17 +27,11 @@ function renderFavorite() {
   const isFavoriteEmpty = favoritesArray.length === 0;
   let fragment = new DocumentFragment();
   favoritesArray.forEach((favorite) => {
-    // const article = helper.createElement(
-    //   "article",
-    //   [weatherCardHeader(favorite)],
-    //   {}
-    // );
     const weathercard = weatherCardTop(favorite);
     fragment.append(weathercard);
   });
 
   //condtionally render section based length of favoritesArray
-  console.log(favoritesArray.length === 0);
   const section = helper.createElement(
     "section",
     [isFavoriteEmpty ? renderNoFavorite() : fragment],

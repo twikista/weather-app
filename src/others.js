@@ -3,7 +3,7 @@ import renderHomeState from "./states/home-state";
 import { formatDistanceToNowStrict, parseISO } from "date-fns";
 
 function autoUpdateTime() {
-  const updateTime = document.querySelector(".update-time");
+  const updateTime = document.querySelector(".last-updated");
   const weather = defaultDataStore.defaultLocationData();
   const timeSnap = new Date(weather[0].time).getTime();
   if (updateTime) {

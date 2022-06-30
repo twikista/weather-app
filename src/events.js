@@ -22,9 +22,6 @@ function setCurrentLocation() {
     e.preventDefault();
     const location = input.value;
     renderingState.searchOutput();
-    // renderHomeState.setIsRenderingHome(false);
-    // renderFavoriteState.setIsRenderingFavorite(false);
-    renderingState.searchOutput();
     getData(location);
     input.value = "";
   });
@@ -37,7 +34,7 @@ function setDefaultLocation() {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const location = input.value;
-      renderHomeState.setIsRenderingDefault(true);
+      renderHomeState.setIsRenderingHome(true);
       getData(location);
       input.value = "";
     });
@@ -72,7 +69,6 @@ const updateDefaultLocationWeatherData = () => {
         favoritesArray.forEach((i) => {
           if (i.id === id) location = i.city;
         });
-
         getData(location);
         return;
       }
@@ -130,13 +126,11 @@ const backToHome = () => {
       target.classList.contains("app-logo") ||
       target.classList.contains("home-btn")
     ) {
-      // renderFavoriteState.setIsRenderingFavorite(false);
       renderingState.home();
-      // console.log(renderFavoriteState.renderingFavorite());
-      // console.log(renderHomeState.renderingHome());
       mainElement.innerHTML = "";
+      // mainElement.append(renderHome());
+      // events();
       renderHome();
-      events();
       helper.activeTab(target);
     }
   });
@@ -164,7 +158,6 @@ const deletefavorite = () => {
       return;
     }
     const id = target.id;
-    console.log(id);
     favorites.deleteFavorite(id);
     favoriteCount.textContent = `${favorites.favoritesData().length}`;
     renderFavorite();

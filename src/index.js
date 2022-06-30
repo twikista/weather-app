@@ -4,7 +4,6 @@ import initialize from "./others";
 import headerSection from "./components/header";
 import mainSection from "./components/main";
 import footerSection from "./components/footer";
-import initializeHome from "./components/initialize-home";
 
 function app() {
   const fragment = new DocumentFragment();
@@ -28,7 +27,8 @@ function app() {
 }
 
 app();
+
 events();
 initialize();
-initializeHome();
+
 export default app;

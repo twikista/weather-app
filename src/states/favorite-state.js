@@ -10,8 +10,6 @@ const renderFavoriteState = (() => {
     return isRenderingFavorite;
   };
 
-  console.log(isRenderingFavorite);
-
   return { setIsRenderingFavorite, renderingFavorite };
 })();
 

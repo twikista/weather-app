@@ -10,27 +10,9 @@ const cardHeaderBottom = (data) => {
         "update-icon material-icons-outlined text-pink-500 cursor-pointer pr-[3px] hover:animate-spin",
     });
 
-    // const updateBtnWidth = renderFavoriteState.renderingFavorite()
-    //   ? "max-w-[100px] sm:max-w-[120px]"
-    //   : "w-[100%]";
-
     const updateBtn = helper.createElement("button", [updateIcon, "update"], {
-      class: `update-btn flex justify-center items-center px-[5px] py-[3px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[80px] uppercase`,
+      class: `update-btn flex justify-center items-center px-[5px] py-[6px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[80px] uppercase mb-[10px]`,
     });
-
-    // const timeStamp = new Date(data).getTime();
-    // const timeStamp1 = new Date().getTime();
-    // console.log(formatDistanceToNowStrict(data.currentTime));
-    // const lastupdated = formatDistanceToNowStrict(timeStamp);
-    // console.log(data.currentTime);
-
-    /*const lastWeatherUpdateTime = helper.createElement(
-      "span",
-      [`Updated: ${formatDistanceToNowStrict(data.currentTime)} ago`],
-      {
-        class: "last-updated- text-slate-400  text-[10px] sm:text-sm",
-      }
-    );*/
 
     const updateBtnDiv = helper.createElement("div", [updateBtn], {
       class: "flex justify-between items-center",
@@ -50,11 +32,11 @@ const cardHeaderBottom = (data) => {
       [favoriteIcon, "add to favorite"],
       {
         class:
-          "favorite-btn  flex justify-center items-center px-[5px] py-[3px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[100px] flex-1 capitalize",
+          "favorite-btn  flex justify-center items-center px-[5px] py-[6px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[100px] flex-1 capitalize mb-[10px]",
       }
     );
     const addToFavoriteDiv = helper.createElement("div", [addToFavoriteBTn], {
-      class: "add-favorite flex items-center ",
+      class: "add-favorite flex items-center mb-[10px]",
     });
 
     return addToFavoriteDiv;
@@ -71,7 +53,7 @@ const cardHeaderBottom = (data) => {
       [removeIcon, "delete"],
       {
         id: `${data.id}`,
-        class: `remove-favorite flex justify-center items-center px-[5px] py-[3px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[100px] uppercase`,
+        class: `remove-favorite flex justify-center items-center px-[5px] py-[6px] rounded-[5px] text-slate-300 text-xs border-slate-500 border-solid border-[1px] cursor-pointer hover:border-purple-400 hover:boder-indigo-700 hover:text-purple-400 hover:scale-[1.02] font-semibold  transiton duration-[50] ease-in w-[100%] min-w-[100px] uppercase mb-[10px] `,
       }
     );
     return removeFromFavoriteBtn;
@@ -106,12 +88,6 @@ const cardHeaderBottom = (data) => {
     }
   );
 
-  // const defaultClass = {'flex '}
-  //
-  console.log(
-    renderHomeState.renderingHome(),
-    renderFavoriteState.renderingFavorite()
-  );
   return headerBottom;
 };
 

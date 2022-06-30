@@ -3,13 +3,16 @@ import renderHomeState from "../../states/home-state";
 import * as helper from "../../helper";
 
 const configuredHomepage = (weatherData) => {
-  const main = document.querySelector("main");
-  main.innerHTML = "";
   const section = helper.createElement("section", [weatherCard(weatherData)], {
     class: "default-index",
   });
-  // renderHomeState.setIsRenderingHome(true);
-  main.append(section);
+  // if (main) {
+  //   main.innerHTML = "";
+  //   main.append(section);
+  //   console.log(main);
+  //   return;
+  // }
+  return section;
 };
 
 export default configuredHomepage;

@@ -28,7 +28,6 @@ export function userTime(timeZoneOffset) {
   const utcTime = localTime + localTimeOffset;
   const locationOffset = utcTime + 1000 * timeZoneOffset;
   const locationTime = new Date(locationOffset);
-  console.log(locationTime);
   return locationTime;
 }
 
